@@ -1,0 +1,27 @@
+<Movies>
+  <Movie Title="Alien" Director="Ridley Scott" ReleaseDate="1979-05-25" AverageUserRating="9.4" Runtime="117" Price="59" />
+  <Movie Title="Final Fantasy: The Spirits Within" Director="Hironobu Sakaguchi" ReleaseDate="2001-07-02" AverageUserRating="5.1" Runtime="106" Price="99" />
+  <Movie Title="Iron Man" Director="Jon Favreau" ReleaseDate="2008-04-14" AverageUserRating="9.3" Runtime="126" Price="149" />
+  <Movie Title="Avengers" Director="Joss Whedon" ReleaseDate="2012-04-11" AverageUserRating="9.8" Runtime="143" Price="149" />
+  <Movie Title="Citizen Kane" Director="Orson Wells" ReleaseDate="1941-09-05" AverageUserRating="8.5" Runtime="119" Price="99" />
+  <Movie Title="Ring" Director="Hideo Nakata" ReleaseDate="1998-01-31" AverageUserRating="8.1" Runtime="95" Price="249" />
+  <Movie Title="Danger Zone" Director="Allan Eastman" ReleaseDate="1996-08-02" AverageUserRating="2.6" Runtime="92" Price="249" />
+  <Movie Title="Dragonball Z: Battle of Gods" Director="Masahiro Hosoda" ReleaseDate="2013-03-30" AverageUserRating="8.0" Runtime="105" Price="149" />
+  <Movie Title="Wild Wild West" Director="Barry Sonnenfeld" ReleaseDate="1999-06-30" AverageUserRating="2.8" Runtime="106" Price="99" />
+  <Movie Title="Muppet Treasure Island" Director="Brian Henson" ReleaseDate="1996-02-16" AverageUserRating="7.7" Runtime="100" Price="99" />
+  <Movie Title="Serenity" Director="Jos Whedon" ReleaseDate="2005-07-22" AverageUserRating="9.2" Runtime="119" Price="59" />
+  <Movie Title="Gremlins" Director="Joe Dante" ReleaseDate="1984-06-08" AverageUserRating="7.8" Runtime="106" Price="79" />
+  <Movie Title="Gremlins 2: The New Batch" Director="Joe Dante" ReleaseDate="1990-06-15" AverageUserRating="5.7" Runtime="106" Price="98" />
+  <Movie Title="Total Recall" Director="Paul Verhoeven " ReleaseDate="1990-06-01" AverageUserRating="7.8" Runtime="113" Price="88" />
+  <Movie Title="Avengers: Endgame" Director="Russo Brothers" ReleaseDate="2019-04-22" AverageUserRating="9.0" Runtime="181" Price="79" />
+  <Movie Title="The Martian" Director="Ridley Scott" ReleaseDate="2015-09-11" AverageUserRating="9.1" Runtime="141" Price="59" />
+  <Movie Title="Avengers: Infinity War" Director="Russo Brothers" ReleaseDate="2018-04-23" AverageUserRating="9.1" Runtime="149" Price="69" />
+  <Movie Title="Deadpool 2" Director="David Leitch" ReleaseDate="2018-04-10" AverageUserRating="8.5" Runtime="119" Price="149" />
+  <Movie Title="Deadpool" Director="Tim Miller" ReleaseDate="2016-02-08" AverageUserRating="9.0" Runtime="108" Price="59" />
+  <Movie Title="GreenLantern" Director="Martin Campbell" ReleaseDate="2011-06-15" AverageUserRating="4.5" Runtime="114" Price="30" />
+  <Movie Title="Spider-Man: Homecoming" Director="Jon Watts" ReleaseDate="2017-07-25" AverageUserRating="8.7" Runtime="133" Price="129" />
+  <Movie Title="Spider-Man: Far From Home" Director="Jon Watts" ReleaseDate="2019-07-02" AverageUserRating="9.5" Runtime="129" Price="149" />
+  <Movie Title="Thor: Ragnarok" Director="Taika Waititi" ReleaseDate="2017-10-10" AverageUserRating="8.7" Runtime="130" Price="99" />
+  <Movie Title="Wonder Woman" Director="Patty Jenkins" ReleaseDate="2017-05-15" AverageUserRating="8.7" Runtime="141" Price="49" />
+  <Movie Title="Jurassic Park" Director="Steven Spielberg" ReleaseDate="1993-06-09" AverageUserRating="9.2" Runtime="126" Price="149" />
+</Movies>

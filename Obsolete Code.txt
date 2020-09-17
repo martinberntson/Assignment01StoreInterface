@@ -1,0 +1,171 @@
+XElement movieList = new XElement("MovieList");
+            XElement movie = new XElement("movie");
+            XElement title = new XElement("title");
+
+            title.SetValue("Sagan om Ringen");
+
+            movie.Add(title);
+            movieList.Add(movie);
+
+            movieList.Save(@"C:\movies\movies.xml");
+
+            Console.WriteLine(movieList.Element());
+
+
+
+            /*
+             * DataSet excelSheet = new DataSet();
+             * string connString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={excelDocPath}; Extended Properties='Excel 8.0;HDR=NO;IMEX=1;'";
+             * OleDbConnection oledbConn = new OleDbConnection(connString);
+             * DataSet excelData = new DataSet();
+             * oledbConn.Open();
+             * OleDbCommand cmd = new OleDbCommand();
+             * cmd.Connection = oledbConn;
+             * DataTable excelSheets = oledbConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+             */
+
+            // DataSet excelData = ExcelSheetReader.ExcelSheetReader.Input(excelDocPath);
+
+            //Console.WriteLine(document.ReadCell(1,1));
+
+            /*
+            Console.WriteLine(excelDocPath);
+            // %CD% for current directory
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+            Console.WriteLine(System.AppContext.BaseDirectory);
+            // Console.WriteLine(Directory.GetCurrentDirectory());
+            Console.WriteLine(Environment.CurrentDirectory);
+            // Console.WriteLine(this.GetType().Assembly.Location); */
+
+            //Hans-Johnny har precis startat en butik på nätet där han säljer film och musik till en smalare publik.
+
+            //Butiken har två adresser, en för fakturering och en besöksadress.
+            //Butikens utbud består av 25 unika filmer och 25 unika musikalbum.
+
+            //Resultatet skall presentera följande information.
+
+            //För filmer: Namn, Regissör, Snittbetyg från användare(0 - 10), Releasedatum, Speltid(i minuter och timmar), Pris.
+            //För musikalbum: Namn, Artist, Snittbetyg från användare(0 - 10), Releasedatum, Speltid(i minuter och timmar), Antal låtar, Pris.
+
+            //Album innehåller även en lista med låtar som skall innehålla följande information: Låtnamn, Speltid, Ytterligare artister(featuring)
+
+            //Följande skall skrivas ut:
+
+            //Butikens information(inklusive adresser).
+            //Filmutbud, sorterat efter releasedatum, fallande(nyast överst).
+            //Albumutbud, sorterat efter snittbetyg från användare, fallande(högst överst).
+
+            //Datamodellen skall i största möjliga mån dela information där det är möjligt.
+
+            //(Fiktiv data accepteras självklart)
+
+
+            /*Film filmAlien = new Film("Alien", "Ridley Scott", 4.79, "1979-05-25", 117, 59);
+            Album albumBeforeMeteor = new Album("Before Meteor", "Nobuo Uematsu, Masayoshi Soken, Ai Yamashita, " +
+                                                "Naoshi Mizuta, Tsuyoshi Sekito and Ryo Yamazaki", 5.0, "2013-08-14", 365, 104, 665);
+            filmAlien.PrintAll();
+            albumBeforeMeteor.PrintAll();
+            Console.WriteLine($"Billing at {fakturaAdress}, visit our store at {besoksAdress}."); */
+
+
+
+            /* Det behövs nu skapas 48 ytterligare objekt.
+             * Album behöver också ytterligare information, varje spår ska ha ett namn, speltid och extra-artister.
+             * Det betyder att varje album skulle behöva två string-arrayer och en int-array.
+             * 
+             * Första fasen av programmet ska skapa alla filmer och album som används i programmet
+             * Sen kommer en while-loop hållas igång tills användaren väljer att lämna
+             * Då kommer man in i en serie Console Writes och Reads för att låta användaren navigera genom menyer
+             * 
+             * När man lämnar shoppen så kommer man få ett medelande som tackar för besöket.
+             */
+
+            // Initializing inventory; this is going to be busy.
+
+            /*
+            Film filmAlien = new Film("Alien", "Ridley Scott", 4.7, "1979-05-25", 117, 59);
+            Film filmTheSpiritsWithin = new Film("Final Fantasy: The Spirits Within", "Hironobu Sakaguchi", 2.55, "2001-07-02", 106, 99);
+            Film filmIronMan = new Film("Iron Man", "Jon Favreau", 4.65, "2008-04-14", 126, 149);
+            Film filmAvengers = new Film("Avengers", "Joss Whedon", 4.9, "2012-04-11", 143, 149);
+            Film filmCitizenKane = new Film("Citizen Kane", "Orson Wells", 4.25, "1941-09-05", 119, 99);
+            Film filmRing = new Film("Ring", "Hideo Nakata", 4.05, "1998-01-31", 95, 249);
+            Film filmDangerZone = new Film("Danger Zone", "Allan Eastman", 1.3, "1996-08-02", 92, 249);
+            Film filmDBZBOG = new Film("Dragonball Z: Battle of Gods", "Masahiro Hosoda", 4.0, "2013-03-30", 105, 149);
+            Film filmWildWildWest = new Film("Wild Wild West", "Barry Sonnenfeld", 1.4, "1999-06-30", 106, 99);
+            Film filmMuppetTreasureIsland = new Film("Muppet Treasure Island", "Brian Henson", 3.85, "1996-02-16", 100, 99);
+            Film filmSerenity = new Film("Serenity", "Jos Whedon", 4.6, "2005-07-22", 119, 59);
+            Film filmGremlins = new Film("Gremlins", "Joe Dante", 3.9, "1984-06-08", 106, 79);
+            Film filmGremlins2 = new Film("Gremlins 2: The New Batch", "Joe Dante", 2.85, "1990-06-15", 106, 98);
+            Film filmJurassicPark = new Film("Jurassic Park", "Steven Spielberg", 4.6, "1993-06-09", 126, 149);
+            Film filmTotalRecall = new Film("Total Recall", "Paul Verhoeven ", 3.9, "1990-06-01", 113, 88);
+            Film filmAvengersEndgame = new Film("Avengers: Endgame", "Russo Brothers", 4.50, "2019-04-22", 181, 79);
+            Film filmTheMartian = new Film("The Martian", "Ridley Scott", 4.55, "2015-09-11", 141, 59);
+            Film filmAvengersInfinityWar = new Film("Avengers: Infinity War", "Russo Brothers", 4.55, "2018-04-23", 149, 69);   // Här gav jag upp och bara
+                                                                                                                                // fyllde med Marvel-filmer
+            Film filmDeadpool2 = new Film("Deadpool 2", "David Leitch", 4.25, "2018-04-10", 119, 149);
+            Film filmDeadpool = new Film("Deadpool", "Tim Miller", 4.5, "2016-02-08", 108, 59);
+            Film filmGreenLantern = new Film("GreenLantern", "Martin Campbell", 2.25, "2011-06-15", 114, 30); // Note: please buy, stocking was a mistake
+            Film filmSpiderManHomecoming = new Film("Spider-Man: Homecoming", "Jon Watts", 4.35, "2017-07-25", 133, 129);
+            Film filmSpiderManFarFromHome = new Film("Spider-Man: Far From Home", "Jon Watts", 4.75, "2019-07-02", 129, 149);
+            Film filmThorRagnarok = new Film("Thor: Ragnarok", "Taika Waititi", 4.35, "2017-10-10", 130, 99);
+            Film filmWonderWoman = new Film("Wonder Woman", "Patty Jenkins", 4.35, "2017-05-15", 141, 49);
+            */
+
+
+            // Album testing = new Album();
+            // testing.Fill("s1", "s2", 1.0, "s3", 1, 1, 1);
+
+
+            /*
+            Album albumBeforeMeteor = new Album("Before Meteor", "Nobuo Uematsu, Masayoshi Soken, Ai Yamashita, " +
+                                                "Naoshi Mizuta, Tsuyoshi Sekito and Ryo Yamazaki", 5.0, "2013-08-14", 365, 104, 665);
+            Album albumPowerRangersRedux = new Album("Power Rangers Redux", "Ron Wasserman", 4.9, "2012-10-22", 85, 21, 57);
+            Album albumEscapology = new Album("Escapology", "Robbie Williams", 4.1, "2002-10-10", 73, 16, 159);
+            Album albumRobyn = new Album("Robyn", "Robyn", 4.4, "2005-04-29", 38, 13, 79);
+            Album albumJoyride = new Album("Joyride", "Roxette", 3.5, "1991-03-28", 59, 15, 99);
+            Album albumWhatIf = new Album("What if This CD... Had Lyrics?", "brentalfloss", 2.33, "2010-04-26", 49, 20, 70);
+            Album albumQueen = new Album("Queen", "Queen", 3.65, "1973-07-13", 38, 10, 159);            // Här gav jag upp och bara kollade upp alla Queen album.
+            Album albumQueenII = new Album("Queen II", "Queen", 4.36, "1974-03-08", 40, 11, 159);       // Jag har inte något av de album på den här listan
+            Album albumSheerHeartAttack = new Album("Sheer Heart Attack", "Queen", 3.97, "1974-11-08", 39, 13, 159); // För jag har inte köpt album nånsin.
+            Album albumANightAtTheOpera = new Album("A Night at the Opera", "Queen", 3.84, "1975-11-21", 43, 12, 159);
+            Album albumADayAtTheRaces = new Album("A Day at the Races", "Queen", 3.78, "1976-12-10", 43, 10, 159);
+            Album albumNewsOfTheWorld = new Album("News of the World", "Queen", 3.25, "1977-10-28", 39, 11, 199);
+            Album albumJazz = new Album("Jazz", "Queen", 3.49, "1978-11-10", 44, 13, 159);
+            Album albumTheGame = new Album("The Game", "Queen", 2.83, "1980-06-30", 34, 10, 159);
+            Album albumFlashGordon = new Album("Flash Gordon", "Queen", 2.15, "1980-11-24", 35, 18, 159);
+            Album albumHotSpace = new Album("Hot Space", "Queen", 1.88, "1982-05-21", 45, 11, 159);
+            Album albumTheWorks = new Album("The Works", "Queen", 2.91, "1984-02-27", 37, 9, 199);
+            Album albumAKindOfMagic = new Album("A Kind of Magic", "Queen", 3.00, "1986-06-02", 40, 9, 159);
+            Album albumTheMiracle = new Album("The Miracle", "Queen", 3.20, "1988-05-22", 41, 10, 159);
+            Album albumInnuendo = new Album("Innuendo", "Queen", 3.88, "1991-02-04", 53, 12, 159);
+            Album albumMadeInHeaven = new Album("Made in Heaven", "Queen", 3.27, "1995-11-06", 70, 13, 159);
+            Album albumTheCosmosRocks = new Album("The Cosmos Rocks", "Queen + Paul Rodgers", 1.93, "2008-09-15", 58, 14, 129);
+            Album albumQuakeOST = new Album("Quake (Original Sound Track)", "Trent Reznor", 3.45, "1996-06-22", 58, 10, 50);  // Tog slut på Queen album
+            Album albumThePickOfDestiny = new Album("The Pick of Destiny", "Tenacious D", 4.1, "2006-11-14", 33, 15, 99);     // Så jag lät YouTube rekommendera
+            Album albumEchoesSilencePatienceGrace = new Album("Echoes, Silence, Patience & Grace ", "Foo Fighters", 3.95, "2007-09-25", 51, 12, 159);
+            // Mistakes were made - glömde lägga in ett album jag skrev ner i min .txt fil, så... nummer 26!
+            Album albumTheChristmasPresent = new Album("The Christmas Present", "Robbie Williams", 4.15, "2019-11-22", 78, 24, 159); // Den här kom från
+            */                                                                                                    // en "top 40 albums of 2019"-lista
+
+
+            /* Create album.
+             * Create a track array; Track tracks[] = new Track[]
+             * Then use a loop for each track in tracks[] and fill it with the relevant info using the Track object constructor.
+             * Now. Where to store all the data for the tracks?
+             * Add a bunch of arrays in main[] and send the correct arrays to the correct album constructor call, 
+             *      or have slightly more complex code and hide it away in either the album or tracks classes. 
+             * If I add code in Tracks.cs, it'll have to go through if-cases/switches for each track, meaning Before Meteor alone
+             *      would need a switch with 104 cases.
+             * If I add code in Album.cs I would need to store each array there, and then have a separate call function for the
+             *      tracks constructor for each possible album.
+             * Or I add each array in Main; rebuild the constructor for albums to accept string[], int[] and string[], then
+             *      just have the Album class use those in a for each loop and fill a pre-made Track array with the appropriate data.
+             * Basically, unless I store the data externally, say in a .excel file, storing it in Main will result in far less code,
+             *      far fewer checks, and it'll even be easier to add or remove albums since no new code is needed in the constructors.
+             * This means I now have to define, in Main, 52 string arrays and 26 int arrays, update the Album.cs constructor, and
+             *      then I can feed in the arrays in the correct constructors. Messy.
+             *      
+             * Alternatively skip the whole Track subclass and store it all in arrays in the Album class.
+             * Y'know, whatever.
+             */
+

@@ -1,0 +1,754 @@
+s1 Title
+s2 Artist
+s4 ReleaseDate
+s3 AverageUserRating
+s5 Runtime
+s6 Price
+s7 Tracks
+sa1 Title
+sa2 Feat. Artist
+sa3 Runtime
+
+
+##########################################################################
+
+"Before Meteor", "Nobuo Uematsu, Masayoshi Soken, Ai Yamashita, Naoshi Mizuta, Tsuyoshi Sekito and Ryo Yamazaki", "7.9", "2013-08-14", "365", "104", "665",
+"Power Rangers Redux", "Ron Wasserman", "9.6", "2012-10-22", "85", "21", "57",
+"Escapology", "Robbie Williams", "8.2", "2002-10-10", "73", "16", "159",
+"Robyn", "Robyn", "8.8", "2005-04-29", "38", "13", "79",
+"Joyride", "Roxette", "7.0", "1991-03-28", "59", "15", "99",
+"What if This CD... Had Lyrics?", "brentalfloss", "4.6", "2010-04-26", "49", "20", "70",
+"Queen", "Queen", "7.3", "1973-07-13", "38", "10", "159"
+"Queen II", "Queen", "8.7", "1974-03-08", "40", "11", "159",
+"Sheer Heart Attack", "Queen", "8.0", "1974-11-08", "39", "13", "159",
+"A Night at the Opera", "Queen", "7.7", "1975-11-21", "43", "12", "159",
+"A Day at the Races", "Queen", "7.5", "1976-12-10", "43", "10", "159",
+"News of the World", "Queen", "6.5", "1977-10-28", "39", "11", "199",
+"Jazz", "Queen", "7.0", "1978-11-10", "44", "13", "159",
+"The Game", "Queen", "5.6", "1980-06-30", "34", "10", "159",
+"Flash Gordon", "Queen", "4.3", "1980-11-24", "35", "18", "159",
+"Hot Space", "Queen", "3.8", "1982-05-21", "45", "11", "159",
+"The Works", "Queen", "5.8", "1984-02-27", "37", "9", "199",
+"A Kind of Magic", "Queen", "6.0", "1986-06-02", "40", "9", 159",
+"The Miracle", "Queen", "6.4", "1988-05-22", "41", "10", "159",
+"Innuendo", "Queen", "7.7", "1991-02-04", "53", "12", "159",
+"Made in Heaven", "Queen", "6.6", "1995-11-06", "70", "13", "159",
+"The Cosmos Rocks", "Queen + Paul Rodgers", "3.9", "2008-09-15", "58", "14", "129",
+"Quake (Original Sound Track)", "Trent Reznor", "7.3", "1996-06-22", "58", "10", "50",
+"The Pick of Destiny", "Tenacious D", "8.2", "2006-11-14", "33", "15", "99",
+"Echoes, Silence, Patience & Grace ", "Foo Fighters", "7.9", "2007-09-25", "51", "12", "159",
+"The Christmas Present", "Robbie Williams", "8.3", "2019-11-22", "78", "24", "159",
+
+
+
+
+##########################################################################
+Queen - Queen
+Songs / Tracks Listing
+1973-07-13 
+6.8 / 10
+
+1. Keep Yourself Alive (3:47)
+2. Doing All Right (4:09)
+3. Great King Rat (5:43)
+4. My Fairy King (4:08)
+5. Liar (6:25)
+6. The Night Comes Down (4:23)
+7. Modern Times Rock & Roll (1:48)
+8. Son & Daughter (3:20)
+9. Jesus (3:44)
+10. Seven Seas of Rhye (1:15)
+
+Total Time 38:42
+
+
+#################################
+
+
+Queen II - Queen
+Studio Album, released in 1974
+
+Songs / Tracks Listing
+- Side White -
+1. Procession (1:12)
+2. Father To Son (6:12)
+3. White Queen (As It Began) (4:33)
+4. Some Day One Day (4:21)
+5. Loser In The End (4:01)
+- Side Black -
+6. Ogre Battle (4:08)
+7. Fairy Feller's Master-Stroke (2:39)
+8. Nevermore (1:17)
+9. March Of The Black Queen (6:03)
+10. Funny How Love Is (3:14)
+11. Seven Seas Of Rhye (2:48)
+
+Total time 40:28
+
+
+#################################
+
+
+Sheer Heart Attack - Queen
+Studio Album, released in 1974
+
+Songs / Tracks Listing
+1. Brighton Rock (5:08)
+2. Killer Queen (2:57)
+3. Tenement Funster (2:48)
+4. Flick of the Wrist (3:46)
+5. Lily of the Valley (1:43)
+6. Now I'm Here (4:10)
+7. In the Lap of the Gods (3:20)
+8. Stone Cold Crazy (2:12)
+9. Dear Friends (1:07)
+10. Misfire (1:50)
+11. Bring Back That Leroy Brown (2:13)
+12. She Makes Me (Stormtrooper in Stilettoes) (4:08)
+13. In the Lap of the Gods... Revisited (3:42)
+
+Total Time 39:04
+
+
+
+
+#################################
+
+
+A Night at the Opera - Queen
+Studio Album, released in 1975
+
+Songs / Tracks Listing
+1. Death On Two Legs (Dedicated To...) (3:43)
+2. Lazing On A Sunday Afternoon (1:08)
+3. I'm In Love With My Car (3:05)
+4. You're My Best Friend (2:50)
+5. '39 (3:25)
+6. Sweet Lady (4:01)
+7. Seaside Rendezvous (2:13)
+8. Prophet's Song (8:17)
+9. Love Of My Life (3:38)
+10. Good Company (3:26)
+11. Bohemian Rhapsody (5:55)
+12. God Save The Queen (1:11)
+
+Total time 42:52
+
+
+#################################
+
+
+A Day at the Races - Queen
+Studio Album, released in 1976
+
+Songs / Tracks Listing
+1. Tie Your Mother Down (4:46)
+2. You Take My Breath Away (4:40)
+3. Long Away (3:55)
+4. Millionaire Waltz (4:52)
+5. You And I (3:23)
+6. Somebody To Love (4:57)
+7. White Man (4:56)
+8. Good Old Fashioned Lover Boy (2:54)
+9. Drowse (3:41)
+10. Teo Torriatte (Let Us Cling Together) (5:51)
+
+Total time 43:55
+
+
+
+#################################
+
+
+News of the World - Queen
+Studio Album, released in 1977
+
+Songs / Tracks Listing
+1. We Will Rock You (2:01)
+2. We Are The Champions (2:59)
+3. Sheer Heart Attack (3:24)
+4. All Dead, All Dead (3:09)
+5. Spread Your Wings (4:32)
+6. Fight From The Inside (3:03)
+7. Get Down, Make Love (3:51)
+8. Sleeping On The Sidewalk (3:07)
+9. Who Needs You (3:07)
+10. It's Late (6:27)
+11. My Melancholy Blues (3:29)
+
+Total time 39:09
+
+
+#################################
+
+
+Jazz - Queen
+Studio Album, released in 1978
+
+Songs / Tracks Listing
+1. Mustapha (3:00)
+2. Fat Bottomed Girls (4:16)
+3. Jealousy (3:13)
+4. Bicycle Race (3:02)
+5. If You Can't Beat Them (4:15)
+6. Let Me Entertain You (3:02)
+7. Dead On Time (3:22)
+8. In Only Seven Days (2:28)
+9. Dreamer's Ball (3:30)
+10. Fun It (3:29)
+11. Leaving Home Ain't Easy (3:14)
+12. Don't Stop Me Now (3:29)
+13. More Of That Jazz (4:20)
+
+Total time 44:40
+
+
+#################################
+
+
+The Game - Queen
+Studio Album, released in 1980
+
+Songs / Tracks Listing
+1. Play The Game (3:32)
+2. Dragon Attack (4:15)
+3. Another One Bites The Dust (3:03)
+4. Need Your Loving Tonight (2:48)
+5. Crazy Little Thing Called Love (2:44)
+6. Rock It (Prime Jive) (4:32)
+7. Don't Try Suicide (3:52)
+8. Sail Away Sweet Sister (3:32)
+9. Coming Soon (2:49)
+10. Save Me (3:42)
+
+Total time 34:49
+
+
+
+#################################
+
+
+Flash Gordon - Queen
+Studio Album, released in 1980
+
+Songs / Tracks Listing
+1. Flash's Theme (3:29)
+2. In The Space Capsule (The Love Theme) (2:42)
+3. Ming's Theme (In Court Of Ming The Merciless) (2:40)
+4. Ring (Hypnotic Seduction Of Dale) (0:57)
+5. Football Fight (1:28)
+6. In The Death Cell (Love Theme Reprise) (2:24)
+7. Execution Of Flash (1:05)
+8. Kiss (Aura Resurrects Flash) (1:44)
+9. Arboria (Planet Of The Tree Men) (1:41)
+10. Escape From The Swamp (1:43)
+11. Flash To The Rescue (2:44)
+12. Vultan's Theme (Attack Of The Hawk Men) (1:12)
+13. Battle Theme (2:18)
+14. Wedding March (0:56)
+15. Marriage Of Dale And Ming (And Flash Approaching) (2:04)
+16. Crash Dive On Mingo City (1:00)
+17. Flash's Theme Reprise (Victory Celebrations) (1:23)
+18. Hero (3:31)
+
+Total time 35:01
+
+
+#################################
+
+
+Hot Space - Queen
+Studio Album, released in 1982
+
+Songs / Tracks Listing
+1. Staying Power (4:10)
+2. Dancer (3:46)
+3. Back Chat (4:31)
+4. Body Language (4:29)
+5. Action This Day (3:32)
+6. Put Out the Fire (3:18)
+7. Life Is Real (Song for Lennon) (3:28)
+8. Calling All Girls (3:50)
+9. Palabras De Amor (The Words of Love) (4:26)
+10. Cool Cat (3:26)
+11. Under Pressure (4:02)
+
+Total Time 42:58
+
+
+#################################
+
+The Works - Queen
+Studio Album, released in 1984
+
+Songs / Tracks Listing
+1. Radio Ga Ga (5:49)
+2. Tear It Up (3:28)
+3. It's A Hard Life (4:08)
+4. Man On The Prowl (3:28)
+5. Machines (Back To Humans) (5:10)
+6. I Want To Break Free (3:20)
+7. Keep Passing The Open Windows (5:21)
+8. Hammer To Fall (4:28)
+9. Is This The World We Created...? (2:13)
+
+Total time 37:25
+
+
+
+#################################
+
+
+A Kind of Magic - Queen
+Studio Album, released in 1986
+
+Songs / Tracks Listing
+1. One Vision (5:08)
+2. Kind Of Magic (4:23)
+3. One Year Of Love (4:26)
+4. Pain Is So Close To Pleasure (4:19)
+5. Friends Will Be Friends (4:07)
+6. Who Wants To Live Forever (5:13)
+7. Gimme The Prize (Kurgan's Theme) (4:32)
+8. Don't Lose Your Head (4:35)
+9. Princes Of The Universe (3:30)
+
+Total time 40:13
+
+
+#################################
+
+
+The Miracle - Queen
+Studio Album, released in 1989
+
+Songs / Tracks Listing
+1. Party (2:24)
+2. Khashoggi's Ship (2:47)
+3. Miracle (5:02)
+4. I Want It All (4:40)
+5. Invisible Man (3:56)
+6. Breakthru (4:07)
+7. Rain Must Fall (4:20)
+8. Scandal (4:42)
+9. My Baby Does Me (3:22)
+10. Was It All Worth It (5:45)
+
+Total time 41:05
+
+
+#################################
+
+
+Innuendo - Queen
+
+Songs / Tracks Listing
+1. Innuendo (6:31)
+2. I'm Going Slightly Mad (4:22)
+3. Headlong (4:38)
+4. I Can't Live With You (4:33)
+5. Don't Try So Hard (3:38)
+6. Ride the Wild Wind (4:42)
+7. All God's People (4:21)
+8. These Are the Days of Our Lives (4:15)
+9. Delilah (3:35)
+10. Hitman (4:56)
+11. Bijou (3:36)
+12. Show Must Go On (4:32)
+
+Total Time 53:39
+
+
+#################################
+
+
+Made in Heaven - Queen
+Studio Album, released in 1995
+
+Songs / Tracks Listing
+1. It's A Beautiful Day (2:32)
+2. Made In Heaven (5:25)
+3. Let Me Live (4:45)
+4. Mother Love (4:49)
+5. My Life Has Been Saved (3:15)
+6. I Was Born To Love You (4:49)
+7. Heaven For Everyone (5:36)
+8. Too Much Love Will Kill You (4:20)
+9. You Don't Fool Me (5:24)
+10. A Winter's Tale (3:49)
+11. It's A Beautiful Day (Reprise) (3:01)
+12. Yeah [Hidden Track] (0:04)
+13. untitled [Hidden Track] (22:32)
+
+Total Time: 70:27
+
+#################################
+
+The Cosmos Rocks - Queen + Paul Rodgers
+Studio Album, released in 2008
+
+Songs / Tracks Listing
+1. Cosmos Rockin' (4:11)
+2. Time To Shine (4:23)
+3. Still Burnin' (4:03)
+4. Small (4:39)
+5. Warboys (3:18)
+6. We Believe (6:07)
+7. Call Me (2:58)
+8. Voodoo (4:27)
+9. Some Things That Glitter (4:02)
+10. C-lebrity (3:38)
+11. Through The Night (4:53)
+12. Say It's Not True (4:01)
+13. Surf's Up...School's Out! (5:55)
+14. small reprise (2:05)
+
+Total Time 58:46
+
+
+#################################
+
+The Christmas Present - Robbie Williams
+Studio Album released in 2019-11-22
+4.15 rating
+
+Songs / Tracks Listing
+1.	Winter Wonderland					2:18
+2.	Merry Xmas Everybody (feat. Jamie Cullum)		3:33
+3.	Let It Snow! Let It Snow! Let It Snow!			1:57
+4.	The Christmas Song (Chestnuts Roasting on an Open Fire)	3:12
+5.	Coco's Christmas Lullaby				2:55
+6.	Rudolph							3:40
+7.	Yeah! It's Christmas					2:49
+8.	It's a Wonderful Life (feat. Poppa Pete)		2:51
+9.	Let's Not Go Shopping					3:09
+10.	Santa Baby (feat. Helene Fischer)			3:27
+11.	Best Christmas Ever					3:45
+12.	One Last Christmas					3:33
+13.	Coco's Christmas Lullaby Reprise			1:14
+// Disc Two
+14.	Time for Change						3:30
+15.	Idlewild						4:08
+16.	Darkest Night						3:19
+17.	Fairytales (feat. Rod Stewart)				3:33
+18.	Christmas (Baby Please Come Home) (feat. Bryan Adams)	2:43
+19.	Bad Sharon (feat. Tyson Fury)				3:40
+20.	Happy Birthday Jesus Christ				3:15
+21.	New Year's Day						3:41
+22.	Snowflakes						3:41
+23.	Home							4:10
+24.	Soul Transmission					4:14
+							       78:15
+
+
+
+#################################
+
+Before Meteor - Nobuo Uematsu, Masayoshi Soken, Ai Yamashita, Naoshi Mizuta, Tsuyoshi Sekito, Ryo Yamazaki
+
+Track list
+No.	Title							Writer(s)	Length
+1.	"Prelude - Remembrance"					Nobuo Uematsu	5:50
+2.	"Opening Theme"						Uematsu		5:56
+3.	"Navigator’s Glory - The Theme of Limsa Lominsa"	Uematsu		3:56
+4.	"Freedom"						Uematsu		5:30
+5.	"On Windy Meadows"					Uematsu		5:18
+6.	"Nail of the Heavens"					Uematsu		3:17
+7.	"In the Shadow of the Colossus"				Uematsu		3:28
+8.	"Siren Song"						Masayoshi Soken	2:05
+9.	"Born of the Boughs - The Theme of Gridania"		Uematsu		5:02
+10.	"Whisper of the Land"					Uematsu		5:28
+
+11.	"Emerald Labyrinth"					Uematsu		3:33
+12.	"The Forest’s Pulse"					Uematsu		3:04
+13.	"Bathed in Woodsin"					Uematsu		3:28
+14.	"March of the Moogles"					Soken		0:44
+15.	"The Twin Faces of Fate - The Theme of Ul’dah"		Uematsu		5:32
+16.	"Twilight over Thanalan"				Uematsu		4:12
+17.	"Widdershins"						Uematsu		3:24
+18.	"Quicksand"						Uematsu		4:38
+19.	"Desert Moon Defied"					Uematsu		3:20
+20.	"Unspoken"						Uematsu		3:13
+
+21.	"Pennons Aloft"						Uematsu		6:01
+22.	"Starlight and Sellswords"				Uematsu		3:50
+23.	"Tears for Mor Dhona"					Uematsu		4:27
+24.	"Phantoms on the Lake"					Uematsu		5:20
+25.	"Supply & Demand"					Uematsu		1:44
+26.	"Behind Closed Doors"					Uematsu	 	3:28
+27.	"Horizons Calling"					Uematsu	 	2:51
+28.	"No Quarter"						Uematsu	 	4:05
+29.	"Beneath Bloodied Banners"				Uematsu	 	5:50
+30.	"With these Hands"					Uematsu	 	2:58
+
+31.	"By Design"						Uematsu		2:20
+32.	"Nature's Bounty"					Uematsu		2:22
+33.	"When a Tree Falls"					Uematsu		1:03
+34.	"Decisions"						Uematsu		2:30
+35.	"Crowning Achievements"					Uematsu		0:11
+36.	"Where the Heart Is"					Uematsu		2:33
+37.	"Holy Consult"						Uematsu		4:39
+38.	"Aetherial Slumber"					Uematsu		3:18
+39.	"The Echo"						Uematsu		1:45
+40.	"Fever Dream"						Uematsu		2:31
+
+41.	"Daring Alliances"					Uematsu		1:46
+42.	"Sacred Bonds"						Uematsu		2:57
+43.	"Piece of Mind"						Uematsu		3:16
+44.	"Inner Recess"						Uematsu		1:19
+45.	"From the Heart"					Uematsu		2:27
+46.	"Fourteen Steps"					Uematsu		3:13
+47.	"Fragments of Forever"					Uematsu		2:22
+48.	"Tranquility"						Uematsu		2:09
+49.	"Neverborn"						Uematsu		2:08
+50.	"Everbinding Oath"					Uematsu		2:37
+
+51.	"Heavensturn"						Uematsu		4:27
+52.	"Moonfire Faire"					Uematsu		3:23
+53.	"All Saint's Wake"					Uematsu		3:15
+54.	"Starlight Celebration"					Uematsu		6:05
+55.	"Conflagration"						Uematsu		5:02
+56.	"The Hero of Hatchingside"				Soken		0:07
+57.	"Enraptured"						Uematsu		4:02
+58.	"Battle Drums"						Uematsu		4:02
+59.	"Bo-down"						Uematsu		2:53
+60.	"Fury"							Uematsu		5:18
+
+61.	"The Seventh Gate"					Uematsu		5:40
+62.	"Victory Fanfare (Short)"				Uematsu		0:11
+63.	"Without Shadow"					Uematsu		3:08
+64.	"Canticle"						Ai Yamashita	1:19
+65.	"Wrath of the Eikons"					Uematsu		3:51
+66.	"Primal Judgment"					Uematsu		5:07
+67.	"Final Respite"						Uematsu		3:31
+68.	"The Dark's Embrace"					Uematsu		3:32
+69.	"The Dark's Kiss"					Uematsu		3:28
+70.	"Nemesis"						Uematsu		4:53
+
+71.	"Victory Fanfare (Full)"				Uematsu		0:40
+72.	"Maelstrom Command"					Naoshi Mizuta	5:50
+73.	"Into the Adder's Den"					Tsuyoshi Sekito	4:11
+74.	"The Hall of Flames"					Ryo Yamazaki	4:33
+75.	"Honor and Duty"					Soken		0:08
+76.	"Eorzea de Chocobo"					Soken		4:24
+77.	"Ripples in the Sea"					Yamazaki	1:15
+78.	"The Sand’s Secrets"					Yamazaki	1:30
+79.	"Dewdrops & Moonbeams"					Yamazaki	1:44
+80.	"Dreams Aloft"						Yamazaki	1:20
+
+81.	"Airborne"						Soken		0:29
+82.	"Birds of a Feather"					Soken		1:25
+83.	"Flee Together"						Soken		1:52
+84.	"Quick as Silver, Hard as Stone"			Mizuta		5:00
+85.	"Flightless Wings"					Uematsu		4:14
+86.	"Pitfire"						Uematsu		2:56
+87.	"The Promise of Plunder"				Soken		3:49
+88.	"Meteor"						Yamazaki	4:06
+89.	"Seven Jesters"						Soken		3:02
+90.	"Good King Moogle Mog XII"				Soken		5:38
+
+91.	"The Rider's Boon"					Sekito		3:20
+92.	"Breaking Boundaries"					Soken		3:20
+93.	"Relics"						Soken		1:58
+94.	"In the Arms of Althyk"					Soken		0:11
+95.	"Agent of Inquiry"					Soken		2:43
+96.	"The Tug of Fate"					Soken		4:30
+97.	"To the Fore"						Soken		6:32
+98.	"Imperial Will"						Uematsu		5:09
+99.	"Steel Reason"						Uematsu		4:17
+100.	"Imperium"						Uematsu		6:28
+
+101.	"Fallen Angel"						Soken		7:09
+102.	"Tempest"						Uematsu		7:51
+103.	"Rise of the White Raven"				Soken		5:51
+104.	"Answers"						Uematsu		7:09
+
+
+################################# #19
+
+Power Rangers Redux - Ron Wasserman
+ 
+
+
+Listen Now
+Buy MP3 Album $6.49
+
+1	Go Go Power Rangers (Redux)			3:58
+2	Fight (Redux)					3:58
+3	Hope for the World (Redux)			4:36
+4	Combat (Redux)					4:59
+5	Cross My Line (Redux)				3:14
+6	Lord Zedd (Redux)				2:40
+7	We Need a Hero (Redux)				5:36
+8	Go Green Ranger Go (Redux)			3:02
+9	Unite (Redux)					4:14
+10	5-4-1 (Redux)					2:24
+11	I Will Win (Redux)				5:34
+12	Go Go Power Rangers (Instrumental Redux)	3:58
+13	Fight (Instrumental Redux)			3:56
+14	Hope for the World (Instrumental Redux)		4:36
+15	Combat (Instrumental Redux)			4:58
+16	Cross My Line (Instrumental Redux)		3:15
+17	We Need a Hero (Instrumental Redux)		5:35
+18	Go Green Ranger Go (Instrumental Redux)		3:03
+19	Unite (Instrumental Redux)			4:14
+20	5-4-1 (Instrumental Redux)			2:24
+21	I Will Win (Instrumental Redux)			5:25
+
+
+#################################
+
+
+Escapology - Robbie Williams
+Studio  Album
+
+1.	"How Peculiar"		3:13
+2.	"Feel"			4:23
+3.	"Something Beautiful"	4:48
+4.	"Monsoon"		3:46
+5.	"Sexed Up"		4:21
+6.	"Love Somebody"		4:10
+7.	"Revolution" 		5:44 (feat. Rose Stone)
+8.	"Handsome Man"		3:56
+9.	"Come Undone"		4:38
+10.	"Me and My Monkey"	7:12
+11.	"Song 3"		3:50
+12.	"Hot Fudge"		4:08
+13.	"Cursed"		4:01
+14.	"Nan's Song"		3:52
+15.	"How Peculiar (Reprise)"2:14 (hidden track)
+16.	"I Tried Love" 		3:31 (hidden track)
+
+
+#################################
+
+
+Robyn - Robyn
+Studio Album
+
+1.	Curriculum Vitae		1:53
+2.	Who's That Girl			3:47
+3.	Handle Me			3:47
+4.	Robotboy			3:31
+5.	Be Mine!			3:27
+6.	Bionic Woman (Interlude)	0:16
+7. 	Crash and Burn Girl		3:35
+8.	Tomteverkstan (interlude)	0:17
+9.	Konichiwa Bitches		2:37
+10.	Burn Like You			3:42
+11.	Eclipse				3:29
+12.	Should Have Known		3:59
+13.	Anytime You Like		3:52
+				       38:12
+
+
+#################################
+
+
+Joyride – Roxette
+Studio Album
+
+1.	"Joyride"					 	4:24
+2.	"Hotblooded"						3:18
+3.	"Fading Like a Flower (Every Time You Leave)"	 	3:52
+4.	"Knockin' on Every Door"			 	3:56
+5.	"Spending My Time"					4:36
+6.	"I Remember You"				 	3:54
+7.	"Watercolours in the Rain"				3:40
+8.	"The Big L."	 					4:26
+9.	"Soul Deep"					 	3:34
+10.	"(Do You Get) Excited?"					4:16
+11.	"Church of Your Heart"				 	3:16
+12.	"Small Talk"	 					3:53
+13.	"Physical Fascination"				 	3:27
+14.	"Things Will Never Be the Same"	 			4:26
+15.	"Perfect Day"						4:05
+							       59:02
+
+
+#################################
+
+
+What if this CD... Had Lyrics? - brentalfloss
+
+
+1.	Ducktales With Lyrics (Moon Theme) 						02:51	
+2.	Gypsy Tetris 									00:22	
+3.	Tetris With Lyrics (A-type, Gameboy) 						01:51	
+4.	Corey 										03:18	
+5.	Final Fantasy Victory Theme With Lyrics 					01:02	
+6.	Good Example 									01:45	
+7.	Mega Man 3 With Lyrics (Title Theme) 						02:28	
+8.	Bubble Man With Lyrics (Mega Man 2)						01:52	
+9.	Final Fantasy Classic With Lyrics 						03:05	
+10.	A Boy and his Blob Mini-Lyric (Earth Theme) 					00:39	
+11.	brentalfloss feat. the Megas - Gotta Run/Be The One (Mega Man 2 Wily Level) 	03:44	
+12.	Paperboy With Lyrics feat. The Konami Kode (NES - Main Theme)			05:25	
+13.	Mario Piano Medley 								03:36	
+14.	Final Fantasy IV Love Theme With Lyrics 					01:29	
+15.	The Roommate Song 								03:01	
+16.	Dr. Mario With Lyrics (Fever Theme) 						01:30	
+17.	Introspective Duck in Space (Ducktales Moon Theme) 				01:30	
+18.	Mushroom Kingdom (Parody of "Sister Christian" by Night Ranger) 		02:53	
+19.	Zelda With Lyrics 								02:15	
+20.	The End? 									04:48
+
+
+#################################
+
+
+Quake (Original Sound Track) - Trent Reznor
+
+02	Persia Invasion / Quake Theme				5:08
+03	The Life Beneath It All / Aftermath / Intermission	2:26
+04	Conscience / The Hall of Souls / Whispers		8:20
+05	Freezing Vertigo / It is Raped				6:05
+06	The Journey / Parallel Dimensions			7:24
+07	The Hammer / Life					8:38
+08	Ice / Damnation						5:35
+09	Peace? / Focus						6:28
+10	Violence Inside / Falling				3:32
+11	Death / The Reaction					5:15
+							       58:56
+
+#################################
+
+
+The Pick of Destiny - Tenacious D
+Studio Album
+
+1.	Kickapoo
+2.	Classico
+3.	Baby
+4.	Destiny
+5.	History
+6.	The Government Totally Sucks		(feat. JR Reed)
+7.	Master Exploder
+8.	The Divide
+9.	Papagenu (He's my Sassafrass)		(feat. John C. Reilly)
+10.	Dude (I Toatlly Miss You)
+11.	Break-in-City (Storm the Gate!)
+12.	Car Chase City 				(feat. Paul F. Tompkins)
+13.	POD
+14.	The Metal
+
+
+#################################
+
+
+Echoes, Silence, Patience & Grace - Foo Fighters
+Studio Album, released 2007-09-25
+
+1.	The Pretender					4:29
+2.	Let it Die					4:05
+3.	Erase/Replace					4:13
+4.	Long Road to Ruin				3:44
+5.	Come Alive					5:10
+6.	Stranger Things Have Happened (Grohl)		5:21
+7.	Cheer Up, Boys (Your Make Up Is Running)	3:41
+8.	Summer's End					4:37
+9.	Ballad of the Beaconsfield Miners (Grohl)	2:32
+10.	Statues						3:47
+11.	But, Honestly					4:35
+12.	Home						4:52
+						       51:12
