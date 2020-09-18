@@ -6,17 +6,11 @@ using System.Text;
 
 namespace Assignment01StoreInterface
 {
-	class Album
+	class Album : Goods
 	{
 		private string[] trackTitles;
 		private string[] trackRuntimes;
 		private string[] trackFeatArtists;
-		private string albumTitle;
-		private string albumArtist;
-		private string albumDate;
-		private decimal albumAverageUserRating;
-		private short albumRuntime;
-		private byte albumPrice;
 		private short albumTrackCount;
 
 		public Album(List<string> t1, List<string> t2, List<string> t3, string s1, string s2, string s3, decimal d, short sh1, byte b, short sh2) 
@@ -24,12 +18,12 @@ namespace Assignment01StoreInterface
 			trackTitles = new string[t1.Count];
 			trackRuntimes = new string[t2.Count];
 			trackFeatArtists = new string[t3.Count];
-			albumTitle = s1;
-			albumArtist = s2;
-			albumDate = s3;
-			albumAverageUserRating = d;
-			albumRuntime = sh1;
-			albumPrice = b;
+			title = s1;
+			topBilling = s2;
+			releaseDate = s3;
+			averageUserRating = d;
+			runtime = sh1;
+			price = b;
 			albumTrackCount = sh2;
 
 
@@ -47,14 +41,9 @@ namespace Assignment01StoreInterface
 			}
 
 		}
-		public string AlbumDate()
-		{
-			return albumDate;
-		}
-		public string AlbumTitle()
-		{
-			return albumTitle;
-		}
+		
+		
+
 		public string[] AlbumTracks()
         {
 			return trackTitles;
@@ -70,9 +59,14 @@ namespace Assignment01StoreInterface
 			return trackTitles.Length;
         }
 
-		public string AlbumArtist()
+		public string AlbumArtist() // This is here instead of in Goods because its name is more clear on what data is get fetched.
         {
-			return albumArtist;
+			return topBilling;
+        }
+
+		public string AlbumRating()
+        {
+			return Convert.ToString(averageUserRating);
         }
 	}
 }

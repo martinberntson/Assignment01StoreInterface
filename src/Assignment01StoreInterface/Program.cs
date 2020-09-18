@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.ServiceModel.Channels;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace Assignment01StoreInterface
 {
@@ -27,17 +23,41 @@ namespace Assignment01StoreInterface
 
 
             Album[] sortedAlbumList;
-            sortedAlbumList = Sorter.AlbumSort(albumList);
+            sortedAlbumList = Sorter.AlbumSortRating(albumList);
+            Array.Reverse(sortedAlbumList);
+            
 
             Movie[] sortedMovieList;
             sortedMovieList = Sorter.MovieSort(movieList);
+            Array.Reverse(sortedMovieList);
 
+
+            Console.WriteLine("Please enter a number from 1 to 3.");
+            int test = TryRead.MenuChoice();
+            Console.WriteLine(test);
+            Console.ReadLine();
 
             Console.WriteLine("Would you like to print all albums' tracks? (y/n)");
             bool printTrack = TryRead.BoolRead();
             Printer.AlbumPrinter(sortedAlbumList, printTrack);
             Printer.MoviePrinter(sortedMovieList);
 
+
+            /* UI Design:
+             * 1. Welcome screen followed by a prompt to "press enter to continue" or somesuch. Name "Hans-Johnnys Butik", adress, stuff like that.
+             * 2. Options menu; would you like to a) go with stored XML data or b) generate a dataset of user-defined size?
+             * 3. Initialization, possibly with visualization of how objects are sorted.
+             * 4. Store menu. Here you can make choices based on the assignment specifications. At some part of the screen, show the billing and shop adresses.
+             *      a) Show a list of movie on the left, sorted by release date.
+             *      b) Show a list of albums on the right, sorted by release date.
+             *          Each movie and album has an associated number
+             *      c) Print descriptive text telling the user what input the console is waiting for.
+             *      d) Options at this screen should be "Pick a Movie" and "Pick an Album", and it takes inputs in the form of '1', '2', '3' and so on.
+             *          If you pick an option, it wants you to then pick which item from the list to grab.
+             *          If you pick a movie, it prints the Name, Director, Average User Rating, Release Date and Price of the movie
+             *          If you pick an album, it prints the Name, Artist, Average User Rating, Release Date, Price and Track Count
+             *              It then asks if you want a list of tracks in the album. If 'y', then print a list of Track Name : Runtime : Featured Artist
+             */
             
 
 

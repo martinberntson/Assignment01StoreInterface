@@ -4,38 +4,22 @@ using System.Text;
 
 namespace Assignment01StoreInterface
 {
-    class Movie
+    class Movie : Goods
     {
-        string movieTitle;
-        string movieDirector;
-        string movieReleaseDate;
-        decimal movieAverageUserRating;
-        byte movieRuntime;
-        byte moviePrice;
 
         public Movie(string s1, string s2, string s3, decimal d1, byte b1, byte b2)
         {
-            movieTitle = s1;
-            movieDirector = s2;
-            movieReleaseDate = s3;
-            movieAverageUserRating = d1;
-            movieRuntime = b1;
-            moviePrice = b2;
+            title = s1;
+            topBilling = s2;
+            releaseDate = s3;
+            averageUserRating = d1;
+            runtime = (short)b1;
+            price = b2;
         }
 
-        public string MovieDate()
+        public string MovieDirector()  // Tydligare än att ha en TopBilling() metod i Goods
         {
-            return movieReleaseDate;
-        }
-
-        public string MovieTitle()
-        {
-            return movieTitle;
-        }
-
-        public string MovieDirector()
-        {
-            return movieDirector;
+            return topBilling;
         }
     }
 }
