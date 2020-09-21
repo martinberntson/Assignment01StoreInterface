@@ -7,8 +7,10 @@ namespace Assignment01StoreInterface
 {
     class Printer
     {
-        public static void AlbumPrinter(Album[] input, bool track)
+        public static void AlbumPrinter(Album[] input)
         {
+            Console.WriteLine("Would you like to print all albums' tracks? (y/n)");
+            bool track = TryRead.BoolRead();
             if (input != null)
             {
                 if (track)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ServiceModel.Channels;
 using System.Text;
 
 namespace Assignment01StoreInterface
@@ -8,25 +9,30 @@ namespace Assignment01StoreInterface
     {
         public static bool BoolRead()
         {
-            bool printTrack;
+            bool printTracks;
             try
             {
-                if (Convert.ToChar(Console.ReadLine()) == 'y')
+                char input = Convert.ToChar(Console.ReadLine());
+                if (input == 'y')
                 {
-                    printTrack = true;
+                    printTracks = true;
+                }
+                else if (input == 'n')
+                {
+                    printTracks = false;
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input. Try again.");
-                    printTrack = BoolRead();
+                    printTracks = BoolRead();
                 }
             }
             catch
             {
                 Console.WriteLine("Invalid Input. Try again.");
-                printTrack = BoolRead();
+                printTracks = BoolRead();
             }
-            return printTrack;
+            return printTracks;
         }
 
         public static int MenuChoice()
