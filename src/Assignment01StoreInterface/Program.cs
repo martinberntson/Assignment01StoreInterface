@@ -14,30 +14,32 @@ namespace Assignment01StoreInterface
 
         static void Main(string[] args)
         {
-            //string filePath = Directory.GetCurrentDirectory();
-
-            //List<Album> albumList = AlbumReader.Read(filePath + "/AlbumData.xml");
-            //List<Movie> movieList = MovieReader.Read(filePath + "/MovieData.xml");
+            // Step the first; load the two .xml files containing all the album and movie data.
+            // Todo: add a choice of either using premade data or generating data procedurally.
             List<Album> albumList = AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
             List<Movie> movieList = MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
 
 
-
+            // Sort the album data by average user rating
             Album[] sortedAlbumList;
             sortedAlbumList = Sorter.AlbumSortRating(albumList);
-            Array.Reverse(sortedAlbumList);
+            try
+            {
+                Array.Reverse(sortedAlbumList);
+            }
+            catch { }
             
-
+            // Sort the movie data by release date
             Movie[] sortedMovieList;
             sortedMovieList = Sorter.MovieSort(movieList);
-            Array.Reverse(sortedMovieList);
+            try
+            {
+                Array.Reverse(sortedMovieList);
+            }
+            catch { }
 
-
-            Console.WriteLine("Please enter a number from 1 to 3.");
-            int test = TryRead.MenuChoice();
-            Console.WriteLine(test);
-            Console.ReadLine();
-
+            // Ask whether all album track titles should be printed as well since they take quite a lot of vertical space.
+            // Will be obsolete once proper menus are added.
             Console.WriteLine("Would you like to print all albums' tracks? (y/n)");
             bool printTrack = TryRead.BoolRead();
             Printer.AlbumPrinter(sortedAlbumList, printTrack);

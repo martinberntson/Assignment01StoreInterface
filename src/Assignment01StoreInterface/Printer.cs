@@ -9,40 +9,46 @@ namespace Assignment01StoreInterface
     {
         public static void AlbumPrinter(Album[] input, bool track)
         {
-
-            if (track)
+            if (input != null)
             {
-                string title;
-                for (int n = 0; n < input.Length; n++)
+                if (track)
                 {
-                    Console.WriteLine(input[n].Title() + ", rated average " + input[n].AlbumRating());
-                    Console.WriteLine("  Performed by: " + input[n].AlbumArtist());
-
-                    for (int i = 0; i < (input[n].AlbumTrackCount()); i++)
+                    string title;
+                    for (int n = 0; n < input.Length; n++)
                     {
-                        title = input[n].AlbumTrack(i);
-                        Console.WriteLine("  " + title);
+                        Console.WriteLine(input[n].Title() + ", rated average " + input[n].AlbumRating());
+                        Console.WriteLine("  Performed by: " + input[n].AlbumArtist());
+
+                        for (int i = 0; i < (input[n].AlbumTrackCount()); i++)
+                        {
+                            title = input[n].AlbumTrack(i);
+                            Console.WriteLine("  " + title);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int n = 0; n < input.Length; n++)
+                    {
+                        Console.WriteLine(input[n].Title() + ", rated average " + input[n].AlbumRating());
+                        Console.WriteLine("  Performed by: " + input[n].AlbumArtist());
                     }
                 }
             }
-            else
-            {
-                for (int n = 0; n < input.Length; n++)
-                {
-                    Console.WriteLine(input[n].Title() + ", rated average " + input[n].AlbumRating());
-                    Console.WriteLine("  Performed by: " + input[n].AlbumArtist());
-                }
-            }
+            else Console.WriteLine("Album data unavailable.");
         }
 
         public static void MoviePrinter(Movie[] input)
         {
-
-            for (int n = 0; n < input.Length; n++)
+            if (input != null)
             {
-                Console.WriteLine(input[n].Title() + ", released on " + input[n].Date());
-                Console.WriteLine("  Directed by: " + input[n].MovieDirector());
+                for (int n = 0; n < input.Length; n++)
+                {
+                    Console.WriteLine(input[n].Title() + ", released on " + input[n].Date());
+                    Console.WriteLine("  Directed by: " + input[n].MovieDirector());
+                }
             }
+            else Console.WriteLine("Movie data unavailable.");
         }
     }
 }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.IO;
+using Microsoft.Office.Interop.Excel;
 
 namespace Assignment01StoreInterface
 {
     class AlbumReader
     {
         // Enter code to read all the album data and then return it here
-        public static List<Album> Read(string FilePath)
-        {
+        public static List<Album> Read(string FilePath)     // FilePath is what it says on the tin - the path to the file that's to be read. 
+        {                                                   // 
             List<Album> albums = new List<Album>();
             List<string> trackTitles;
             List<string> trackRuntimes;
@@ -30,6 +31,7 @@ namespace Assignment01StoreInterface
             {
                 Console.WriteLine("AlbumData.xml was not found.");
                 // If data isn't found and I manage to create a generator for random data, then use that here instead.
+                return null;
             }
             XmlNodeList itemNodes = xDoc.SelectNodes("//Albums/Album");
             // Console.WriteLine(itemNodes.Count);
@@ -44,7 +46,7 @@ namespace Assignment01StoreInterface
                 albumPrice = Convert.ToByte(albumNode.Attributes["Price"].Value);
                 albumTrackCount = (short)Convert.ToInt32(albumNode.Attributes["Tracks"].Value);
 
-                
+
                 trackTitles = new List<string>();
                 trackRuntimes = new List<string>();
                 trackFeatArtists = new List<string>();

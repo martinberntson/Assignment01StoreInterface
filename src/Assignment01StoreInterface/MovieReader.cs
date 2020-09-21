@@ -20,6 +20,7 @@ namespace Assignment01StoreInterface
             {
                 Console.WriteLine("MovieData.xml was not found.");
                 // If data isn't found and I manage to create a generator for random data, then use that here instead.
+                return null;
             }
             XmlNodeList itemNodes = xDoc.SelectNodes("//Movies/Movie");
             // Console.WriteLine(itemNodes.Count);
