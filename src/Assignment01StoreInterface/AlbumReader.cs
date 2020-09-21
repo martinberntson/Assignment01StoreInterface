@@ -44,7 +44,7 @@ namespace Assignment01StoreInterface
                 albumPrice = Convert.ToByte(albumNode.Attributes["Price"].Value);
                 albumTrackCount = (short)Convert.ToInt32(albumNode.Attributes["Tracks"].Value);
 
-
+                
                 trackTitles = new List<string>();
                 trackRuntimes = new List<string>();
                 trackFeatArtists = new List<string>();

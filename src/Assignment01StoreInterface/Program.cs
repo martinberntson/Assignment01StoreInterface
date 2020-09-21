@@ -14,11 +14,12 @@ namespace Assignment01StoreInterface
 
         static void Main(string[] args)
         {
-            string filePath = Directory.GetCurrentDirectory();
-            Console.WriteLine(filePath);
+            //string filePath = Directory.GetCurrentDirectory();
 
-            List<Album> albumList = AlbumReader.Read(filePath + "/AlbumData.xml");
-            List<Movie> movieList = MovieReader.Read(filePath + "/MovieData.xml");
+            //List<Album> albumList = AlbumReader.Read(filePath + "/AlbumData.xml");
+            //List<Movie> movieList = MovieReader.Read(filePath + "/MovieData.xml");
+            List<Album> albumList = AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
+            List<Movie> movieList = MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
 
 
 
@@ -57,6 +58,23 @@ namespace Assignment01StoreInterface
              *          If you pick a movie, it prints the Name, Director, Average User Rating, Release Date and Price of the movie
              *          If you pick an album, it prints the Name, Artist, Average User Rating, Release Date, Price and Track Count
              *              It then asks if you want a list of tracks in the album. If 'y', then print a list of Track Name : Runtime : Featured Artist
+             *              
+             *              
+             * So I first want a menu choice that asks which list you want, albums, movies, adresses, or if you want to exit.
+             *  Basically Console.WriteLine($"Please enter a number corresponding to this list: \r\n
+             *                              1) Print Album List
+             *                              2) Print Movie List
+             *                              3) Print Store Information
+             *                              4) Exit");
+             * In the submenus for Albums/Movies, which are listed in the format of "n. albumTitle by albumArtist" or "n. movieTitle by movieDirector"
+             *      the user is then promted to enter a number corresponding to the item in the list they want to view.
+             *          When they choose an item the item's info gets printed on the screen in the format "albumTitle
+             *                                                                                             by albumArtist
+             *                                                                                             released on albumDate
+             *                                                                                             Only albumPrice to buy today!"
+             *                                                                                             Followed by a list of tracks contained in the album.
+             *          And then they get the option to return to the list, put in an order or leave the shop.
+             * 
              */
             
 
