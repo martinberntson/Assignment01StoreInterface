@@ -112,7 +112,7 @@ namespace Assignment01StoreInterface
                     tempBucket = bucket;
 
                 }
-                Console.WriteLine("Albums sorted.");
+                // Console.WriteLine("Albums sorted.");
                 outputList.Reverse();
                 return outputList;
             }
@@ -225,7 +225,7 @@ namespace Assignment01StoreInterface
                     tempBucket = bucket;
 
                 }
-                Console.WriteLine("Albums sorted.");
+                // Console.WriteLine("Albums sorted.");
                 outputList.Reverse();
                 return outputList;
             }
@@ -342,7 +342,7 @@ namespace Assignment01StoreInterface
 
                 }
                 outputList.Reverse();
-                Console.WriteLine("Movies sorted.");
+                // Console.WriteLine("Movies sorted.");
                 return outputList;
             }
             else

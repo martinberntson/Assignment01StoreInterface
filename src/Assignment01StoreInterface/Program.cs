@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.ServiceModel.Dispatcher;
 
 namespace Assignment01StoreInterface
 {
     class Program
     {
-
-        string fakturaAdress = "Unreasonable Lane 991a";
-        string besoksAdress = "Oddroad 13579";
-
-
+        static private List<Album> albumList;
+        static private List<Movie> movieList;
         static void Main(string[] args)
         {
             // Step the first; load the two .xml files containing all the album and movie data.
             // Todo: add a choice of either using premade data or generating data procedurally.
-            List<Album> albumList = AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
-            List<Movie> movieList = MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
+            albumList = Initialize.Album();
+            movieList = Initialize.Movie();
+            List<string> menuItems = Initialize.Menu();
             // Perhaps add logic here to check if one or both files are found or not, and if they're not then change what menu choices are available.
 
 
@@ -39,10 +38,17 @@ namespace Assignment01StoreInterface
             }
             catch { }
 
+            bool isRunning = true;
+            while(isRunning)
+            {
+                menuItems = Menu.Draw(menuItems, out isRunning);
+            }
+
             // Ask whether all album track titles should be printed as well since they take quite a lot of vertical space.
             // Will be obsolete once proper menus are added.
-            Printer.AlbumPrinter(sortedAlbumList);
-            Printer.MoviePrinter(sortedMovieList);
+            // Printer.AlbumPrinter(sortedAlbumList);
+            // Printer.MoviePrinter(sortedMovieList);
+
 
 
             /* UI Design:
@@ -97,7 +103,15 @@ namespace Assignment01StoreInterface
 
         }
 
-      
+        public static List<Album> GetAlbums()
+        {
+            return albumList;
+        }
+        public static List<Movie> GetMovies()
+        {
+            return movieList;
+        }
+
 
 
     }

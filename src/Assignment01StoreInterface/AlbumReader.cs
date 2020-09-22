@@ -11,7 +11,7 @@ namespace Assignment01StoreInterface
     {
         // Enter code to read all the album data and then return it here
         public static List<Album> Read(string FilePath)     // FilePath is what it says on the tin - the path to the file that's to be read. 
-        {                                                   // 
+        {
             List<Album> albums = new List<Album>();
             List<string> trackTitles;
             List<string> trackRuntimes;
@@ -68,7 +68,7 @@ namespace Assignment01StoreInterface
                 // Console.WriteLine($"Album {albumNode.Attributes["Title"].Value} added to list.");
             }
             
-            Console.WriteLine("Albums read; returning to Main[].");
+            // Console.WriteLine("Albums read; returning to Main[].");
             return albums;
 
 
