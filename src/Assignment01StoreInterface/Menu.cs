@@ -51,62 +51,10 @@ namespace Assignment01StoreInterface
                                 " No",
                             };
                             bool albumsLoop = true;
+                            bool looped = false;
                             while (albumsLoop)
                             {
-                                selectedMenuItem = DrawMenu(MenuItems);
-                                if (selectedMenuItem.Contains('Y'))
-                                {
-                                    MenuItems = new List<string>();
-                                    foreach (Album a in albumList)
-                                    {
-                                        MenuItems.Add(a.Title());
-                                    }
-                                    // All albums are now in a list that I want to be able to go through.
-                                    bool yesLoop = true;
-                                    while (yesLoop)
-                                    {
-                                        selectedMenuItem = DrawMenu(MenuItems);
-                                        foreach (Album a in albumList)
-                                        {
-                                            if (a.Title() == selectedMenuItem)
-                                            {
-                                                Console.Clear();
-                                                Console.WriteLine($"{a.Title()}, performed by {a.AlbumArtist()}, released on {a.Date()} with a rating of {a.averageUserRating}\r\n Available now at a price of {a.price}:-");
-                                                foreach (string s in a.AlbumTracks())
-                                                {
-                                                    MenuItems.Add(s);
-                                                    Console.WriteLine(s);
-                                                }
-                                                yesLoop = false;
-                                            }
-                                        }
-                                    }
-                                    index = 0;
-                                    Console.WriteLine("\r\nPress any key to continue."); Console.ReadLine();
-                                    Console.Clear();
-
-                                    MenuItems = new List<string>
-                                    {
-                                        "Would you like to read additional album information?",
-                                        " Yes",
-                                        " No"
-                                    };
-                                    bool repeat = true;
-                                    while (repeat)
-                                    {
-                                        selectedMenuItem = DrawMenu(MenuItems);
-                                        if ((selectedMenuItem.Contains('N')) | selectedMenuItem.Contains('Y')) // This will work as long as there's no album named "Yes" or "No"
-                                            repeat = false;                                                    // It just checks if a selection has been made before breaking the loop.
-                                        if (selectedMenuItem.Contains('N'))
-                                            albumsLoop = false;
-                                    }
-
-
-                                }
-                                else if (selectedMenuItem.Contains('N'))
-                                {
-                                    albumsLoop = false;
-                                }
+                                selectedMenuItem = Menu.AlbumLoop(selectedMenuItem, MenuItems, out MenuItems, albumList, out albumsLoop, looped, out looped);
                             }
                             MenuItems = new List<string>
                             {
@@ -119,32 +67,21 @@ namespace Assignment01StoreInterface
                             break;
                         }
                     case " Movies":
-                        {
+                        {       // Todo: Add a "keep browsing movies?" option.
                             MenuItems = new List<string>();
-
-                            selectedMenuItem = DrawMenu(MenuItems);
                             foreach (Movie m in movieList)
                             {
                                 MenuItems.Add(m.Title());
                             }
 
-                            bool yesLoop = true;
-                            while (yesLoop)
+                            bool movieLoop = true;
+                            while (movieLoop)
                             {
-                                selectedMenuItem = DrawMenu(MenuItems);
-                                foreach (Movie m in movieList)
-                                {
-                                    if (m.Title() == selectedMenuItem)
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine($"{m.Title()}, performed by {m.MovieDirector()}, released on {m.Date()} with a rating of {m.averageUserRating}\r\n Available now at a price of {m.price}:-");
-                                        yesLoop = false;
-                                    }
-                                }
+                                selectedMenuItem = MovieLoop(selectedMenuItem, MenuItems, out MenuItems, movieList, out movieLoop);
                             }
 
                             index = 0;
-                            Console.WriteLine("\r\nPress any key to continue."); Console.ReadLine();
+                            Console.WriteLine("\r\nPress the any key (enter) to continue."); Console.ReadLine();
                             Console.Clear();
                             MenuItems = new List<string>
                             {
@@ -157,6 +94,12 @@ namespace Assignment01StoreInterface
                             break;
                         }
                     case " Exit":
+                        {
+                            isRunning = false;
+                            index = 0;
+                            break;
+                        }
+                    case "Exit":
                         {
                             isRunning = false;
                             index = 0;
@@ -236,6 +179,83 @@ namespace Assignment01StoreInterface
 
             Console.Clear();
             return "";
+        }
+
+        private static string AlbumLoop(string selectedMenuItem,List<string> MenuItems, out List<string> MenuItemsOut, List<Album> albumList, out bool albumsLoop, bool looped, out bool loopy)
+        {
+            albumsLoop = true;
+            if (!looped)
+                selectedMenuItem = DrawMenu(MenuItems);
+            loopy = true;
+            if (selectedMenuItem.Contains('Y'))
+            {
+                MenuItems = new List<string>();
+                foreach (Album a in albumList)
+                {
+                    MenuItems.Add(a.Title());
+                }
+                // All albums are now in a list that I want to be able to go through.
+                bool yesLoop = true;
+                while (yesLoop)
+                {
+                    selectedMenuItem = DrawMenu(MenuItems);
+                    foreach (Album a in albumList)
+                    {
+                        if (a.Title() == selectedMenuItem)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"{a.Title()}, performed by {a.AlbumArtist()}, released on {a.Date()} with a rating of {a.averageUserRating}\r\n Available now at a price of {a.price}:-");
+                            foreach (string s in a.AlbumTracks())
+                            {
+                                MenuItems.Add(s);
+                                Console.WriteLine(s);
+                            }
+                            yesLoop = false;
+                        }
+                    }
+                }
+                index = 0;
+                Console.WriteLine("\r\nPress the any key (enter) to continue."); Console.ReadLine();
+                Console.Clear();
+
+                MenuItems = new List<string>
+                                    {
+                                        "Would you like to read additional album information?",
+                                        " Yes",
+                                        " No"
+                                    };
+                bool repeat = true;
+                while (repeat)
+                {
+                    selectedMenuItem = DrawMenu(MenuItems);
+                    if ((selectedMenuItem.Contains('N')) | selectedMenuItem.Contains('Y')) // This will work as long as there's no album named "Yes" or "No"
+                        repeat = false;                                                    // It just checks if a selection has been made before breaking the loop.
+                    if (selectedMenuItem.Contains('N'))
+                        albumsLoop = false;
+                }
+            }
+            else if (selectedMenuItem.Contains('N'))
+            {
+                albumsLoop = false;
+            }
+            MenuItemsOut = MenuItems;
+            return selectedMenuItem;
+        }
+        private static string MovieLoop(string selectedMenuItem, List<string> MenuItems, out List<string> MenuItemsOut, List<Movie> movieList, out bool movieLoop )
+        {
+            selectedMenuItem = DrawMenu(MenuItems);
+            movieLoop = true;
+            foreach (Movie m in movieList)
+            {
+                if (m.Title() == selectedMenuItem)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{m.Title()}, directed by {m.MovieDirector()}, released on {m.Date()} with a rating of {m.averageUserRating}\r\n Available now at a price of {m.price}:-");
+                    movieLoop = false;
+                }
+            }
+            MenuItemsOut = MenuItems;
+            return selectedMenuItem;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -40,6 +41,8 @@ namespace Assignment01StoreInterface
 				trackFeatArtists[i] = t3.ElementAt(i);
 			}
 
+			runtime = SetAlbumRuntime(trackRuntimes);
+
 		}
 		
 		
@@ -67,6 +70,29 @@ namespace Assignment01StoreInterface
 		public string AlbumRating()
         {
 			return Convert.ToString(averageUserRating);
+        }
+
+		private short SetAlbumRuntime(string[] sA)
+        {
+			int minuteSum = 0;
+			int secondSum = 0;
+			short sum = 0;
+			foreach (string s in sA)
+            {
+				if (s.Length == 4)
+				{
+					minuteSum += Convert.ToInt32(s.Substring(0, 1));
+					secondSum += Convert.ToInt32(s.Substring(2, 2));
+				}
+				else if (s.Length == 5)
+                {
+					minuteSum += Convert.ToInt32(s.Substring(0, 2));
+					secondSum += Convert.ToInt32(s.Substring(3, 2));
+				}
+            }
+			sum = (short)(((minuteSum * 60) + secondSum) / 60);
+
+			return sum;
         }
 	}
 }

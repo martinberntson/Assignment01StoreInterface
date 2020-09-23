@@ -29,7 +29,7 @@ namespace Assignment01StoreInterface
             try { xDoc.Load(FilePath); }
             catch (System.IO.FileNotFoundException)
             {
-                Console.WriteLine("AlbumData.xml was not found.");
+                Console.WriteLine("AlbumData.xml was not found.\r\nPress the any key to continue."); Console.Read();
                 // If data isn't found and I manage to create a generator for random data, then use that here instead.
                 return null;
             }
