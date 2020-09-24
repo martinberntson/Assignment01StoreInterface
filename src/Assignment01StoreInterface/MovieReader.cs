@@ -16,9 +16,9 @@ namespace Assignment01StoreInterface
             try { xDoc.Load(FilePath); }
             catch (System.IO.FileNotFoundException)
             {
-                Console.WriteLine("MovieData.xml was not found.\r\nPress the any key to continue."); Console.Read();
+                Console.WriteLine("MovieData.xml was not found.\r\nGenerating new data...\r\nPress the any key (enter) to continue."); Console.Read();
                 // If data isn't found and I manage to create a generator for random data, then use that here instead.
-                return null;
+                return MovieReader.Generate(25);
             }
             XmlNodeList itemNodes = xDoc.SelectNodes("//Movies/Movie");
             // Console.WriteLine(itemNodes.Count);

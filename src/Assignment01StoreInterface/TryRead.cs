@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ServiceModel.Channels;
-using System.Text;
 
 namespace Assignment01StoreInterface
 {
@@ -65,14 +62,18 @@ namespace Assignment01StoreInterface
             try
             {
                 i = Convert.ToInt32(Console.ReadLine());
-                
+                if (i == 0)
+                {
+                    Console.WriteLine("Invalid input. Must be greater than 0. Try again.");
+                    i = TryRead.Int(); 
+                }
                 return i;
                 
             }
             catch
             {
                 Console.WriteLine("Invalid input. Try again.");
-                i = MenuChoice();
+                i = TryRead.Int();
             }
 
             return i;

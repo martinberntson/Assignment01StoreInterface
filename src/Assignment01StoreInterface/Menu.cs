@@ -33,21 +33,21 @@ namespace Assignment01StoreInterface
                             MenuItems = new List<string>
                             {
                                 "Hello, and welcome to Hans-Johnny's music and film shop.\r\n" +
-                                "Would you like to browse our music library? Or perhaps our movies?",
-                                " Albums",
-                                " Movies",
-                                " Exit"
+                                "Would you like to browse our music library? Or perhaps our movies?\r\n",
+                                "Albums",
+                                "Movies",
+                                "Exit"
                             };
                             break;
                         }
-                    case " Albums":
+                    case "Albums":
                         {
                             index = 1;
                             MenuItems = new List<string>
                             {
-                                "Here's our current stock of albums. Would you like to look at a specific one?",
-                                " Yes",
-                                " No",
+                                "Here's our current stock of albums. Would you like to look at a specific one?\r\n",
+                                "Yes",
+                                "No",
                             };
                             bool albumsLoop = true;
                             bool looped = false;
@@ -57,15 +57,15 @@ namespace Assignment01StoreInterface
                             }
                             MenuItems = new List<string>
                             {
-                                "Please make a new selection",
-                                " Albums",
-                                " Movies",
-                                " Exit"
+                                "Please make a new selection\r\n",
+                                "Albums",
+                                "Movies",
+                                "Exit"
                             };
                             index = 0;
                             break;
                         }
-                    case " Movies":
+                    case "Movies":
                         {       // Todo: Add a "keep browsing movies?" option.
                             index = 0;
                             MenuItems = new List<string>();
@@ -85,10 +85,10 @@ namespace Assignment01StoreInterface
                             Console.Clear();
                             MenuItems = new List<string>
                             {
-                                "Please make a new selection.",
-                                " Albums",
-                                " Movies",
-                                " Exit"
+                                "Please make a new selection.\r\n",
+                                "Albums",
+                                "Movies",
+                                "Exit"
                             };
                             index = 0;
                             break;
@@ -112,10 +112,6 @@ namespace Assignment01StoreInterface
                 }
             }
             return MenuItems;
-
-
-
-
         }
 
 
@@ -149,7 +145,7 @@ namespace Assignment01StoreInterface
                         if (a.Title() == selectedMenuItem)
                         {
                             Console.Clear();
-                            Console.WriteLine($"{a.Title()}, performed by {a.AlbumArtist()}, released on {a.Date()} with a rating of {a.averageUserRating}\r\n Available now at a price of {a.price}:-");
+                            Console.WriteLine($"{a.Title()}, performed by {a.AlbumArtist()}, released on {a.Date()} with a rating of {a.averageUserRating}\r\n Available now at a price of {a.price}:-\r\n");
                             foreach (string s in a.AlbumTracks())
                             {
                                 MenuItems.Add(s);
@@ -165,9 +161,9 @@ namespace Assignment01StoreInterface
 
                 MenuItems = new List<string>
                                     {
-                                        "Would you like to read additional album information?",
-                                        " Yes",
-                                        " No"
+                                        "Would you like to read additional album information?\r\n",
+                                        "Yes",
+                                        "No"
                                     };
                 index = 1;
                 bool repeat = true;
@@ -206,7 +202,7 @@ namespace Assignment01StoreInterface
                 if (m.Title() == selectedMenuItem)
                 {
                     Console.Clear();
-                    Console.WriteLine($"{m.Title()}, directed by {m.MovieDirector()}, released on {m.Date()} with a rating of {m.averageUserRating}\r\n Available now at a price of {m.price}:-");
+                    Console.WriteLine($"{m.Title()}, directed by {m.MovieDirector()}, released on {m.Date()} with a rating of {m.averageUserRating}\r\n Available now at a price of {m.price}:-\r\n");
                     movieLoop = false;
                 }
             }

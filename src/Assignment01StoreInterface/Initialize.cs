@@ -27,7 +27,7 @@ namespace Assignment01StoreInterface
         public static List<Album> Goods(out List<Movie> MovieList)
         {
             List<string> staticOrDynamic = new List<string> 
-            { "Would you like to get inventory from file or generate it procedurally?", "File", "Generate" };
+            { "Would you like to get inventory from file or generate it procedurally?\r\n", "File", "Generate" };
             bool checkIfFile = Menu.Init(staticOrDynamic);
             List<Album> albumList = new List<Album>();
             List<Movie> movieList = new List<Movie>();
@@ -46,6 +46,7 @@ namespace Assignment01StoreInterface
                 Console.Clear();
                 Console.WriteLine("Plese enter how many movies you want to generate:");
                 int movieCount = TryRead.Int();
+                
                 albumList = AlbumReader.Generate(albumCount);
                 movieList = MovieReader.Generate(movieCount);
                 MovieList = movieList;

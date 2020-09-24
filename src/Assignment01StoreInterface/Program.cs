@@ -1,35 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.ServiceModel.Dispatcher;
 
 namespace Assignment01StoreInterface
 {
     class Program
     {
-        static private List<Album> albumList;
+        static private List<Album> albumList;       // Predefined since there's no getting around them existing
         static private List<Movie> movieList;
         static void Main(string[] args)
         {
-            /* Note for generating pseudo-random albums: 
-             *                                          Roll number of tracks from 5-10.
-             *                                          If 10, set number to 9 and add a number from one to five.
-             *                                          If 5, add 4 and roll again, repeating to random != 5
-             *                                          The sum of all those rolls equals the number of tracks to generate.
-             *                                          This adds a soft-cap on track count without adding a hard cap.
-             */
-
-
             // Step the first; load the two .xml files containing all the album and movie data.
-            // Todo: add a choice of either using premade data or generating data procedurally.
+            // If the XML files are missing it generates 25 random instances of the corresponding data set.
+            // If the user decides to generate a new set of data they can input an integer corresponding to how many objects to generate.
+            // During testing, 500 000 of each put the program at about 400MB RAM usage, taking 20s to generate the data and about 3-4s to sort it.
             albumList = Initialize.Goods(out movieList);
-            // movieList = Initialize.Movie();
+
+            // This just adds two strings to a list, it doesn't do anything other than make Main() look more tidy.
             List<string> menuItems = Initialize.Open();
-            // Perhaps add logic here to check if one or both files are found or not, and if they're not then change what menu choices are available.
 
-
-            // Sort the album data by average user rating, exception if null
+            // Sort the album data by average user rating, exception if null. At this point, there should be virtually no way of the list being null, but who knows.
             Album[] sortedAlbumList;
             sortedAlbumList = Sorter.AlbumSortRating(albumList);
             try
@@ -38,7 +27,8 @@ namespace Assignment01StoreInterface
             }
             catch { }
             
-            // Sort the movie data by release date, exception if null
+            // Sort the movie data by release date, exception if null. Like albums, should be virtually no way of the list being null here.
+            // The try/catches are pretty much development leftovers.
             Movie[] sortedMovieList;
             sortedMovieList = Sorter.MovieSort(movieList);
             try
@@ -47,79 +37,23 @@ namespace Assignment01StoreInterface
             }
             catch { }
 
+
+            // Here is where pretty much the entire program runs; everything that actually outputs relevant information is done through the Menu class.
             bool isRunning = true;
             while(isRunning)
             {
                 menuItems = Menu.Draw(menuItems, out isRunning);
             }
-
-            // Ask whether all album track titles should be printed as well since they take quite a lot of vertical space.
-            // Will be obsolete once proper menus are added.
-            // Printer.AlbumPrinter(sortedAlbumList);
-            // Printer.MoviePrinter(sortedMovieList);
-
-
-
-            /* UI Design:
-             * 1. Welcome screen followed by a prompt to "press enter to continue" or somesuch. Name "Hans-Johnnys Butik", adress, stuff like that.
-             * 2. Options menu; would you like to a) go with stored XML data or b) generate a dataset of user-defined size?
-             * 3. Initialization, possibly with visualization of how objects are sorted.
-             * 4. Store menu. Here you can make choices based on the assignment specifications. At some part of the screen, show the billing and shop adresses.
-             *      a) Show a list of movie on the left, sorted by release date.
-             *      b) Show a list of albums on the right, sorted by release date.
-             *          Each movie and album has an associated number
-             *      c) Print descriptive text telling the user what input the console is waiting for.
-             *      d) Options at this screen should be "Pick a Movie" and "Pick an Album", and it takes inputs in the form of '1', '2', '3' and so on.
-             *          If you pick an option, it wants you to then pick which item from the list to grab.
-             *          If you pick a movie, it prints the Name, Director, Average User Rating, Release Date and Price of the movie
-             *          If you pick an album, it prints the Name, Artist, Average User Rating, Release Date, Price and Track Count
-             *              It then asks if you want a list of tracks in the album. If 'y', then print a list of Track Name : Runtime : Featured Artist
-             *              
-             *              
-             * So I first want a menu choice that asks which list you want, albums, movies, adresses, or if you want to exit.
-             *  Basically Console.WriteLine($"Please enter a number corresponding to this list: \r\n
-             *                              1) Print Album List
-             *                              2) Print Movie List
-             *                              3) Print Store Information
-             *                              4) Exit");
-             * In the submenus for Albums/Movies, which are listed in the format of "n. albumTitle by albumArtist" or "n. movieTitle by movieDirector"
-             *      the user is then promted to enter a number corresponding to the item in the list they want to view.
-             *          When they choose an item the item's info gets printed on the screen in the format "albumTitle
-             *                                                                                             by albumArtist
-             *                                                                                             released on albumDate
-             *                                                                                             Only albumPrice to buy today!"
-             *                                                                                             Followed by a list of tracks contained in the album.
-             *          And then they get the option to return to the list, put in an order or leave the shop.
-             * 
-             */
-            
-
-
-            /* So how to go about this the best way.
-             * In order to sort the data, I'll need two sorting methods, AlbumSort() and MovieSort(), each sorting by release date.
-             * I'll need some nifty way of storing all the data in memory, preferrably in an array, maybe in a list.
-             * Step 1: Read data. Got this down.                                                                                                    DONE
-             * Step 2: Isolate data into sets, save them as objects, and keep them grouped in a list/array. This needs work.                        DONE
-             * Step 3: create one or more sorting algorithms that can sort the objects in the lists based on their release dates.                   1/? Radix done
-             *          Note: Since both MovieData.xml and AlbumData.xml use the ReleaseDate attribute, a single method might cover both types?     YUP
-             * Step 4: Create some UI that lets the user see all the data as presented.                                                             
-             * Step 5: Going beyond what's needed, create a class with methods that generate movies and albums procedurally.                        
-             * Step 6: If bubble and compare sorts are available, disable them for generated lists, since they'll run the risk of doing bad things. 
-             * Step 7: Also disable listing the objects in cases where more than 1000 are made, since writing it all out takes.... Time.            
-             * Step 8: ???
-             * 
-             */
-
         }
 
-        public static List<Album> GetAlbums()
+        /*public static List<Album> GetAlbums() // This code, I believe, was from when I tried to do an async thing that just didn't work the way I wanted it to.
         {
             return albumList;
         }
         public static List<Movie> GetMovies()
         {
             return movieList;
-        }
+        }*/
 
 
 

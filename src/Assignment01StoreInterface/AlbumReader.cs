@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Xml;
 
 namespace Assignment01StoreInterface
@@ -27,9 +26,9 @@ namespace Assignment01StoreInterface
             try { xDoc.Load(FilePath); }
             catch (System.IO.FileNotFoundException)
             {
-                Console.WriteLine("AlbumData.xml was not found.\r\nPress the any key to continue."); Console.Read();
+                Console.WriteLine("AlbumData.xml was not found.\r\nGenerating new data...\r\nPress the any key (enter) to continue."); Console.Read();
                 // If data isn't found and I manage to create a generator for random data, then use that here instead.
-                return null;
+                return AlbumReader.Generate(25);
             }
             XmlNodeList itemNodes = xDoc.SelectNodes("//Albums/Album");
             // Console.WriteLine(itemNodes.Count);
@@ -109,10 +108,10 @@ namespace Assignment01StoreInterface
                 
 
                 Random rollTrackCount = new Random();
-                int roll = rollTrackCount.Next(1,5);
+                int roll = rollTrackCount.Next(6);
                 bool loop = true;
 
-                int trackCount = 0;
+                int trackCount = 5;
                 while (loop)
                 {
                     if (roll == 5)
@@ -124,6 +123,7 @@ namespace Assignment01StoreInterface
                         trackCount += roll;
                         loop = false;
                     }
+                    roll = rollTrackCount.Next(6);
                 }
 
                 Random featArtistCheck = new Random();
