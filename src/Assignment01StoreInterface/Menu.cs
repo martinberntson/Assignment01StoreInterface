@@ -272,6 +272,7 @@ namespace Assignment01StoreInterface
                 if (index < items.Count)
                     return items[index];
                 else
+                    
                     return items[items.Count - 1];
             }
             else

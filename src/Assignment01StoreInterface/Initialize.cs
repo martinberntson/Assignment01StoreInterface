@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Assignment01StoreInterface
 {
@@ -12,19 +13,33 @@ namespace Assignment01StoreInterface
             return init;
         }
 
-        public static List<Album> Album()
+        public static void Album()
         {
-            List<Album> albumList = AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
-            return albumList;
+            AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
         }
 
-        public static List<Movie> Movie()
+        public static void Movie()
         {
-            List<Movie> movieList = MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
-            return movieList;
+            MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
         }
 
-        public static List<Album> Goods(out List<Movie> MovieList)
+        public static async void AlbumTask(int albumCount)
+        {
+
+            Task<List<Album>> albumTask = AlbumReader.Generate(albumCount);
+            // List<Album> generatedAlbums = await albumTask;
+            Program.SetAlbums(await albumTask);
+        }
+
+        public static async void MovieTask(int movieCount)
+        {
+
+            Task<List<Movie>> movieTask = MovieReader.Generate(movieCount);
+            // List<Movie> generatedMovies = await movieTask;
+            Program.SetMovies(await movieTask);
+        }
+
+        public static void Goods()
         {
             List<string> staticOrDynamic = new List<string> 
             { "Would you like to get inventory from file or generate it procedurally?\r\n", "File", "Generate" };
@@ -33,9 +48,8 @@ namespace Assignment01StoreInterface
             List<Movie> movieList = new List<Movie>();
             if (checkIfFile)
             {
-                albumList = AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
-                movieList = MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
-                MovieList = movieList;
+                AlbumReader.Read(Directory.GetCurrentDirectory() + "/AlbumData.xml");
+                MovieReader.Read(Directory.GetCurrentDirectory() + "/MovieData.xml");
             }
             else
             {
@@ -46,13 +60,10 @@ namespace Assignment01StoreInterface
                 Console.Clear();
                 Console.WriteLine("Plese enter how many movies you want to generate:");
                 int movieCount = TryRead.Int();
-                
-                albumList = AlbumReader.Generate(albumCount);
-                movieList = MovieReader.Generate(movieCount);
-                MovieList = movieList;
-            }
 
-            return albumList;
+                AlbumTask(albumCount);
+                MovieTask(movieCount);
+            }
         }
     }
 }
