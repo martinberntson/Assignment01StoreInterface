@@ -12,11 +12,20 @@ namespace Assignment01StoreInterface
         static private List<Movie> movieList;
         static void Main(string[] args)
         {
+            /* Note for generating pseudo-random albums: 
+             *                                          Roll number of tracks from 5-10.
+             *                                          If 10, set number to 9 and add a number from one to five.
+             *                                          If 5, add 4 and roll again, repeating to random != 5
+             *                                          The sum of all those rolls equals the number of tracks to generate.
+             *                                          This adds a soft-cap on track count without adding a hard cap.
+             */
+
+
             // Step the first; load the two .xml files containing all the album and movie data.
             // Todo: add a choice of either using premade data or generating data procedurally.
-            albumList = Initialize.Album();
-            movieList = Initialize.Movie();
-            List<string> menuItems = Initialize.Menu();
+            albumList = Initialize.Goods(out movieList);
+            // movieList = Initialize.Movie();
+            List<string> menuItems = Initialize.Open();
             // Perhaps add logic here to check if one or both files are found or not, and if they're not then change what menu choices are available.
 
 

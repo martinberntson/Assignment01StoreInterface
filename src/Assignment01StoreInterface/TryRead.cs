@@ -59,5 +59,23 @@ namespace Assignment01StoreInterface
 
             return i;
         }
+        public static int Int()
+        {
+            int i;
+            try
+            {
+                i = Convert.ToInt32(Console.ReadLine());
+                
+                return i;
+                
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Try again.");
+                i = MenuChoice();
+            }
+
+            return i;
+        }
     }
 }

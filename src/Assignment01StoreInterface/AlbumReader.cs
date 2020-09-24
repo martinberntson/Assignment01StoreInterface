@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Xml;
-using System.IO;
-using Microsoft.Office.Interop.Excel;
 
 namespace Assignment01StoreInterface
 {
@@ -90,6 +88,77 @@ namespace Assignment01StoreInterface
                     else { }
                 }
             }*/
+
+        }
+
+        public static List<Album> Generate(int numberToGenerate)
+        {
+            List<Album> albumList = new List<Album>();
+
+            for (int i = numberToGenerate; i > 0; i--)
+            {
+                string s1 = Generator.AlbumTitle();
+                string s2 = Generator.Name();
+                string s3 = Generator.Date();
+                decimal d1 = Generator.Rating();
+                byte b2 = Generator.Price();
+                List<string> t1 = new List<string>(); // Track Titles
+                List<string> t2 = new List<string>(); // Track Runtimes
+                List<string> t3 = new List<string>(); // Track Feat. Artist
+
+                
+
+                Random rollTrackCount = new Random();
+                int roll = rollTrackCount.Next(1,5);
+                bool loop = true;
+
+                int trackCount = 0;
+                while (loop)
+                {
+                    if (roll == 5)
+                    {
+                        trackCount += roll;
+                    }
+                    else
+                    {
+                        trackCount += roll;
+                        loop = false;
+                    }
+                }
+
+                Random featArtistCheck = new Random();
+                bool[] featArtistWeight = new bool[]
+                {
+                    false, false, false, false, true
+                };
+
+                for (int n = 0; n < trackCount; n++)
+                {
+                    t1.Add(Generator.AlbumTitle());
+                    t2.Add(Generator.TrackRuntime());
+                    bool check = featArtistWeight[(featArtistCheck.Next(1,5) - 1)];
+                    if (check)
+                    {
+                        t3.Add(Generator.Name());
+                    }
+                    else 
+                    { 
+                        t3.Add(""); 
+                    }
+                }
+                int runtimeSum = 0; // Sum of track runtimes in seconds
+                foreach (string s in t2)
+                { 
+                    runtimeSum += (Convert.ToInt32(s.Substring(0,1))*60 + Convert.ToInt32(s.Substring(2,2)));
+                }
+                byte b1 = (byte)(runtimeSum / 60);
+                short sh1 = (short)t1.Count;
+                
+                
+                albumList.Add(new Album(t1, t2, t3, s1, s2, s3, d1, b1, b2, sh1));
+            }
+
+            return albumList;
 
         }
     }

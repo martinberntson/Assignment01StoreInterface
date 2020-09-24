@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using System.Xml;
 
 namespace Assignment01StoreInterface
@@ -32,6 +30,25 @@ namespace Assignment01StoreInterface
                 // Console.WriteLine($"Movie {movieNode.Attributes["Title"].Value} added to list.");
             }
             return movies;
+        }
+
+        public static List<Movie> Generate(int numberToGenerate)
+        {
+            List<Movie> movieList = new List<Movie>();
+
+            for (int i = numberToGenerate; i> 0; i--)
+            {
+                string s1 = Generator.MovieTitle();
+                string s2 = Generator.Name();
+                string s3 = Generator.Date();
+                decimal d1 = Generator.Rating();
+                byte b1 = Generator.MovieRuntime();
+                byte b2 = Generator.Price();
+                movieList.Add(new Movie(s1, s2, s3, d1, b1, b2));
+            }
+
+            return movieList;
+
         }
     }
 }

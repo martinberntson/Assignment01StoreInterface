@@ -1,13 +1,11 @@
-﻿using Assignment01StoreInterface;
-using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Assignment01StoreInterface
 {
     public class Menu
     {
-        private static int index = 0;
+        private static int index = 1;
         static string fakturaAdress = "Unreasonable Lane 991a";
         static string besoksAdress = "Oddroad 13579";
 
@@ -17,6 +15,8 @@ namespace Assignment01StoreInterface
 
             List<Album> albumList = Program.GetAlbums();
             List<Movie> movieList = Program.GetMovies();
+
+            index = 0;  
 
 
             while (isRunning)
@@ -28,7 +28,7 @@ namespace Assignment01StoreInterface
                 {
                     case "Enter Store":
                         {
-                            index = 2;
+                            index = 1;
                             Console.WriteLine();
                             MenuItems = new List<string>
                             {
@@ -38,7 +38,6 @@ namespace Assignment01StoreInterface
                                 " Movies",
                                 " Exit"
                             };
-                            index = 0;
                             break;
                         }
                     case " Albums":
@@ -68,6 +67,7 @@ namespace Assignment01StoreInterface
                         }
                     case " Movies":
                         {       // Todo: Add a "keep browsing movies?" option.
+                            index = 0;
                             MenuItems = new List<string>();
                             foreach (Movie m in movieList)
                             {
@@ -118,6 +118,112 @@ namespace Assignment01StoreInterface
 
         }
 
+
+        /* So the following method needs selectedMenuItem for the DrawMenu(), as well as MenuItems to send in.
+         * Or maybe it doesn't really need selectedMenuItem to be sent in, but I can't be bothered testing it right now.
+         * MenuItems are necessary, though, since they can carry over from previous loops.
+         * albumsLoop determines if the loop break, loopy and looped are there to stop a bug that caused you to have to select "Yes" twice in a menu option.
+         * MenuItemsOut is just MenuItems, except sent back since it can't be the same as the input.
+        */
+        private static string AlbumLoop(string selectedMenuItem,List<string> MenuItems, out List<string> MenuItemsOut, List<Album> albumList, out bool albumsLoop, bool looped, out bool loopy)
+        {
+            loopy = looped;
+            albumsLoop = true;
+            if (!looped)
+                selectedMenuItem = DrawMenu(MenuItems);
+            if (selectedMenuItem.Contains('Y'))
+            {
+                index = 0;
+                MenuItems = new List<string>();
+                foreach (Album a in albumList)
+                {
+                    MenuItems.Add(a.Title());
+                }
+                // All albums are now in a list that I want to be able to go through.
+                bool yesLoop = true;
+                while (yesLoop)
+                {
+                    selectedMenuItem = DrawMenu(MenuItems);
+                    foreach (Album a in albumList)
+                    {
+                        if (a.Title() == selectedMenuItem)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"{a.Title()}, performed by {a.AlbumArtist()}, released on {a.Date()} with a rating of {a.averageUserRating}\r\n Available now at a price of {a.price}:-");
+                            foreach (string s in a.AlbumTracks())
+                            {
+                                MenuItems.Add(s);
+                                Console.WriteLine(s);
+                            }
+                            yesLoop = false;
+                        }
+                    }
+                }
+                index = 0;
+                Console.WriteLine("\r\nPress the any key (enter) to continue."); Console.ReadLine();
+                Console.Clear();
+
+                MenuItems = new List<string>
+                                    {
+                                        "Would you like to read additional album information?",
+                                        " Yes",
+                                        " No"
+                                    };
+                index = 1;
+                bool repeat = true;
+                while (repeat)
+                {
+                    selectedMenuItem = DrawMenu(MenuItems);
+                    if ((selectedMenuItem.Contains('N')) | selectedMenuItem.Contains('Y')) // This will work as long as there's no album named "Yes" or "No"
+                        repeat = false; loopy = true;                                                  // It just checks if a selection has been made before breaking the loop.
+                    if (selectedMenuItem.Contains('N'))
+                    {
+                        albumsLoop = false;
+                        index = 1;
+                    }
+                }
+            }
+            else if (selectedMenuItem.Contains('N'))
+            {
+                albumsLoop = false;
+            }
+
+            MenuItemsOut = MenuItems;
+            return selectedMenuItem;
+        }
+
+        /* Thanks to movies not having subclasses it's a lot simpler here.
+         * Takes in selectedMenuItem, which may or may not be necessary, as well as the MenuItems list and movieList for data to work with.
+         * It returns selectedMenuItem for use outside, while outputs MenuItemsOut as a copy of MenuItems, and movieLoop set to false once all work is done.
+         * Overall, much shorter and more nice-looking than stupid AlbumLoop.
+        */
+        private static string MovieLoop(string selectedMenuItem, List<string> MenuItems, out List<string> MenuItemsOut, List<Movie> movieList, out bool movieLoop )
+        {
+            selectedMenuItem = DrawMenu(MenuItems);
+            movieLoop = true;
+            foreach (Movie m in movieList)
+            {
+                if (m.Title() == selectedMenuItem)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{m.Title()}, directed by {m.MovieDirector()}, released on {m.Date()} with a rating of {m.averageUserRating}\r\n Available now at a price of {m.price}:-");
+                    movieLoop = false;
+                }
+            }
+            MenuItemsOut = MenuItems;
+            return selectedMenuItem;
+        }
+
+        public static bool Init(List<string> MenuItems)
+        {
+            string selectedMenuItem = DrawMenu(MenuItems);
+            if (selectedMenuItem == MenuItems[1])
+            { return true; }
+            else if (selectedMenuItem == MenuItems[2])
+            { return false; }
+            else { return Menu.Init(MenuItems); }
+        }
+
         private static string DrawMenu(List<string> items)
         {
 
@@ -126,7 +232,7 @@ namespace Assignment01StoreInterface
             {
                 if (i == index)
                 {
-                    
+
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.ForegroundColor = ConsoleColor.Black;
 
@@ -181,81 +287,5 @@ namespace Assignment01StoreInterface
             return "";
         }
 
-        private static string AlbumLoop(string selectedMenuItem,List<string> MenuItems, out List<string> MenuItemsOut, List<Album> albumList, out bool albumsLoop, bool looped, out bool loopy)
-        {
-            albumsLoop = true;
-            if (!looped)
-                selectedMenuItem = DrawMenu(MenuItems);
-            loopy = true;
-            if (selectedMenuItem.Contains('Y'))
-            {
-                MenuItems = new List<string>();
-                foreach (Album a in albumList)
-                {
-                    MenuItems.Add(a.Title());
-                }
-                // All albums are now in a list that I want to be able to go through.
-                bool yesLoop = true;
-                while (yesLoop)
-                {
-                    selectedMenuItem = DrawMenu(MenuItems);
-                    foreach (Album a in albumList)
-                    {
-                        if (a.Title() == selectedMenuItem)
-                        {
-                            Console.Clear();
-                            Console.WriteLine($"{a.Title()}, performed by {a.AlbumArtist()}, released on {a.Date()} with a rating of {a.averageUserRating}\r\n Available now at a price of {a.price}:-");
-                            foreach (string s in a.AlbumTracks())
-                            {
-                                MenuItems.Add(s);
-                                Console.WriteLine(s);
-                            }
-                            yesLoop = false;
-                        }
-                    }
-                }
-                index = 0;
-                Console.WriteLine("\r\nPress the any key (enter) to continue."); Console.ReadLine();
-                Console.Clear();
-
-                MenuItems = new List<string>
-                                    {
-                                        "Would you like to read additional album information?",
-                                        " Yes",
-                                        " No"
-                                    };
-                bool repeat = true;
-                while (repeat)
-                {
-                    selectedMenuItem = DrawMenu(MenuItems);
-                    if ((selectedMenuItem.Contains('N')) | selectedMenuItem.Contains('Y')) // This will work as long as there's no album named "Yes" or "No"
-                        repeat = false;                                                    // It just checks if a selection has been made before breaking the loop.
-                    if (selectedMenuItem.Contains('N'))
-                        albumsLoop = false;
-                }
-            }
-            else if (selectedMenuItem.Contains('N'))
-            {
-                albumsLoop = false;
-            }
-            MenuItemsOut = MenuItems;
-            return selectedMenuItem;
-        }
-        private static string MovieLoop(string selectedMenuItem, List<string> MenuItems, out List<string> MenuItemsOut, List<Movie> movieList, out bool movieLoop )
-        {
-            selectedMenuItem = DrawMenu(MenuItems);
-            movieLoop = true;
-            foreach (Movie m in movieList)
-            {
-                if (m.Title() == selectedMenuItem)
-                {
-                    Console.Clear();
-                    Console.WriteLine($"{m.Title()}, directed by {m.MovieDirector()}, released on {m.Date()} with a rating of {m.averageUserRating}\r\n Available now at a price of {m.price}:-");
-                    movieLoop = false;
-                }
-            }
-            MenuItemsOut = MenuItems;
-            return selectedMenuItem;
-        }
     }
 }
