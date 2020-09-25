@@ -6,60 +6,54 @@ namespace Assignment01StoreInterface
 {
     class Program
     {
-        static private List<Album> albumList = new List<Album>();       // Predefined since there's no getting around them existing
+        static private List<Album> albumList = new List<Album>();
         static private List<Movie> movieList = new List<Movie>();
 
        
-        static async Task Main(string[] args)
+        static async Task Main(string[] args)                   // Det finns en varning om att den körs sync'ad. Det är helt okej.
         {
-            // Step the first; load the two .xml files containing all the album and movie data.
-            // If the XML files are missing it generates 25 random instances of the corresponding data set.
-            // If the user decides to generate a new set of data they can input an integer corresponding to how many objects to generate.
-            // During testing, 500 000 of each put the program at about 400MB RAM usage, taking 20s to generate the data and about 3-4s to sort it.
             bool check = false;
-            Initialize.Goods();
-            Console.Clear();
-            Console.WriteLine("Initializing...");
-            while(!check)
-            {
-                if ((albumList.Count > 0) && (movieList.Count > 0))  // Kollar ifall movieList och albumList har fått sitt innehåll från Initialize.Goods() innan vi går vidare.
-                    check = true;
-            }
+            Initialize.Goods();                                 // Kallar metoden som populerar de statiska listorna
+            Console.Clear();                                    // Tar bort text från skärmen
+            Console.WriteLine("Initializing...");               // Och skriver text så användaren vet att det är dags att vänta.
+            while(!check)                                       // Om man använder från fil, eller genererar små mängder, så märks knappt denna loop
+            {                                                   // Men om man skapar 100 000 eller fler objekt så kan det ta ett tag.
+                if ((albumList.Count > 0) && (movieList.Count > 0)) 
+                    check = true;                               // While-loopen med if-sats i ser till att både movieList och albumList har innehåll
+            }                                                   // Utan att kolla det så kan man få en hel exceptions p.g.a. att listorna är null. 
 
-            // movieList.Sort((x,y) => x.Date().CompareTo(y.Date()));
-            // albumList.Sort((x,y) => x.averageUserRating.CompareTo(y.averageUserRating));
 
-            while (check)
-            {
-                // This just adds two strings to a list, it doesn't do anything other than make Main() look more tidy.
-                List<string> menuItems = Initialize.Open();
 
-                // Sort the album data by average user rating, exception if null. At this point, there should be virtually no way of the list being null, but who knows.
+            while (check)                                       // Kommer inte ihåg om den här loopen fixar något problem eller om den bara är från mina många försök
+            {                                                   // Att få async att fungera. Oavsett, den finns, och saker fungerar, så...
+
+                List<string> menuItems = Initialize.Open();     // Hämtar en lista för senare bruk
+
                 Album[] sortedAlbumList;
                 sortedAlbumList = Sorter.AlbumSortRating(albumList);
-                try
+                try                                             // Försöker sortera albumlistan med min hemmagjorda sorteringsmetod.
                 {
                     Array.Reverse(sortedAlbumList);
                 }
-                catch { }
+                catch { }                                       // Och inget händer om det inte fungerar.
 
-                // Sort the movie data by release date, exception if null. Like albums, should be virtually no way of the list being null here.
-                // The try/catches are pretty much development leftovers.
+
                 Movie[] sortedMovieList;
                 sortedMovieList = Sorter.MovieSort(movieList);
-                try
+                try                                             // Försöker sortera filmerna med en väldigt liknande hemmagjord sorteringsmetod.
                 {
                     Array.Reverse(sortedMovieList);
                 }
-                catch { }
+                catch { }                                       // Och än en gång så händer inget om det inte funkar.
 
 
-                // Here is where pretty much the entire program runs; everything that actually outputs relevant information is done through the Menu class.
+
                 bool isRunning = true;
-                while (isRunning)
+                while (isRunning)                               // Den här loopen ser inte så imponerande ut, men det mesta användaren kan göra händer här.
                 {
                     menuItems = Menu.Draw(menuItems, out isRunning);
-                }
+                }                                               // Och när loopen slutar så stänger programmet ner.
+
                 check = false;
             }
         }
@@ -71,10 +65,6 @@ namespace Assignment01StoreInterface
         public static void SetAlbums(List<Album> AlbumList)
         {
             albumList = AlbumList;
-            //foreach (Album a in AlbumList)
-            //{ 
-            //    //albumList.Add(a); 
-            //}
         }
         public static List<Movie> GetMovies()
         {
@@ -83,13 +73,6 @@ namespace Assignment01StoreInterface
         public static void SetMovies(List<Movie> MovieList)
         {
             movieList = MovieList;
-            //foreach (Movie m in MovieList)
-            //{ 
-
-            //    //movieList.Add(m);
-            //}
         }
-
-
     }
 }

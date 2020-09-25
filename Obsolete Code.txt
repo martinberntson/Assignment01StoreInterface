@@ -235,3 +235,164 @@ XElement movieList = new XElement("MovieList");
              *                                          The sum of all those rolls equals the number of tracks to generate.
              *                                          This adds a soft-cap on track count without adding a hard cap.
              */
+
+
+
+using System;
+
+namespace Assignment01StoreInterface
+{
+    class Printer
+    {
+        public static void AlbumPrinter(Album[] input)
+        {
+            Console.WriteLine("Would you like to print all albums' tracks? (y/n)");
+            bool track = TryRead.BoolRead();
+            if (input != null)
+            {
+                if (track)
+                {
+                    string title;
+                    for (int n = 0; n < input.Length; n++)
+                    {
+                        Console.WriteLine(input[n].Title() + ", rated average " + input[n].AlbumRating());
+                        Console.WriteLine("  Performed by: " + input[n].AlbumArtist());
+
+                        for (int i = 0; i < (input[n].AlbumTrackCount()); i++)
+                        {
+                            title = input[n].AlbumTrack(i);
+                            Console.WriteLine("  " + title);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int n = 0; n < input.Length; n++)
+                    {
+                        Console.WriteLine(input[n].Title() + ", rated average " + input[n].AlbumRating());
+                        Console.WriteLine("  Performed by: " + input[n].AlbumArtist());
+                    }
+                }
+            }
+            else Console.WriteLine("Album data unavailable.");
+        }
+
+        public static void MoviePrinter(Movie[] input)
+        {
+            if (input != null)
+            {
+                for (int n = 0; n < input.Length; n++)
+                {
+                    Console.WriteLine(input[n].Title() + ", released on " + input[n].Date());
+                    Console.WriteLine("  Directed by: " + input[n].MovieDirector());
+                }
+            }
+            else Console.WriteLine("Movie data unavailable.");
+        }
+    }
+}
+
+
+
+ public static Album[] AlbumSort(List<Album> inputList)
+        {
+            if (inputList != null)
+            {
+                Album[] outputList = new Album[inputList.Count];
+                int counter = 0;
+                foreach (Album a in inputList)
+                {
+                    outputList[counter] = a;
+                    counter++;
+                }
+                int[] bucket = new int[10];
+                int[] tempBucket = new int[10];
+
+                for (int i = 9; i >= 0; i--)
+                {
+                    if ((i != 4) && (i != 7))
+                    {
+                        for (int n = 0; n < inputList.Count; n++)
+                        {
+                            bucket[Convert.ToInt32(inputList.ElementAt(n).Date().Substring((i), 1))] += 1;
+                        }
+
+
+
+                        tempBucket = bucket;
+                        for (int n = 0; n < 9; n++)
+                        {
+                            bucket[n + 1] += bucket[n];
+                        }
+
+                        for (int n = (inputList.Count - 1); n >= 0; n--)
+                        {
+                            switch (Convert.ToInt32(inputList.ElementAt(n).Date().Substring(i, 1)))
+                            {
+                                case 0:
+                                    bucket[0] -= 1;
+                                    outputList[bucket[0]] = inputList.ElementAt(n);
+                                    break;
+                                case 1:
+                                    bucket[1] -= 1;
+                                    outputList[bucket[1]] = inputList.ElementAt(n);
+                                    break;
+                                case 2:
+                                    bucket[2] -= 1;
+                                    outputList[bucket[2]] = inputList.ElementAt(n);
+                                    break;
+                                case 3:
+                                    bucket[3] -= 1;
+                                    outputList[bucket[3]] = inputList.ElementAt(n);
+                                    break;
+                                case 4:
+                                    bucket[4] -= 1;
+                                    outputList[bucket[4]] = inputList.ElementAt(n);
+                                    break;
+                                case 5:
+                                    bucket[5] -= 1;
+                                    outputList[bucket[5]] = inputList.ElementAt(n);
+                                    break;
+                                case 6:
+                                    bucket[6] -= 1;
+                                    outputList[bucket[6]] = inputList.ElementAt(n);
+                                    break;
+                                case 7:
+                                    bucket[7] -= 1;
+                                    outputList[bucket[7]] = inputList.ElementAt(n);
+                                    break;
+                                case 8:
+                                    bucket[8] -= 1;
+                                    outputList[bucket[8]] = inputList.ElementAt(n);
+                                    break;
+                                case 9:
+                                    bucket[9] -= 1;
+                                    outputList[bucket[9]] = inputList.ElementAt(n);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                        inputList.Clear();
+
+                        for (int n = 0; n < outputList.Length; n++)
+                        {
+                            inputList.Insert(n, outputList[n]);
+                        }
+                    }
+                    else { }
+                    for (int n = 0; n < 10; n++)
+                    { bucket[n] = 0; }
+                    tempBucket = bucket;
+
+                }
+
+                outputList.Reverse();
+                return outputList;
+            }
+            else
+            {
+                return null;
+            }
+        }

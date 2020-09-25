@@ -15,8 +15,8 @@ namespace Assignment01StoreInterface
             price = b2;
         }
 
-        public string MovieDirector()  // Tydligare än att ha en TopBilling() metod i Goods
-        {
+        public string MovieDirector()                       // Endast här istället för i Goods.cs för att det är tydligare att ha Movie.MovieDirector() än Movie.TopBilling()
+        {                                                   // Speciellt då TopBilling är mer troligt att referera till skådespelare. 
             return topBilling;
         }
     }

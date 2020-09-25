@@ -2,10 +2,11 @@
 
 namespace Assignment01StoreInterface
 {
-    class Generator
+    class Generator                                                 // Klass för att skapa nya objekt utan att läsa fil.
     {
         private static string[] internals = new string[] { "up", "a", "an", "without", "nor", "but", "yet", "so", "with",
-            "at", "around", "by", "after", "along", "for", "from", "of", "to", "of the", "in", "on", "the", };
+            "at", "around", "by", "after", "along", "for", "from", "of", "to", "of the", "in", "on", "the", };              // Ord som används för att separera andra ord.
+
         private static string[] movieTitleWords = new string[] { "Empire", "Half", "Show", "Basic", "Poetic", "Kids", "Dead", "The", "Pump", "Man",
             "Fear", "Life", "Space", "Happy", "Never", "Boy", "Ten", "Nine", "Twelve", "Mortal",
             "Sister", "City", "Birdcage", "Raise", "Lantern", "House", "Party", "Rumble", "Bronx", "Army",
@@ -24,6 +25,7 @@ namespace Assignment01StoreInterface
             "Moon", "Mars", "Martian", "Invasion", "Assault", "Battery", "Satellite", "Dish", "Food", "Thought",
             "Spaghetti", "Pizza", "Vegan", "Apple", "Pear", "Lemon", "Orange", "Typical", "Unliving", "Eternal",
             "Ephemeral", "Void", "Blank", "Toward", "Sing", "Silence", "Stars", "Star", "Starring", "Ground" };
+
         private static string[] albumWords = new string[]
         {
             "Stone","Rock","Metal","Hard","Leather","Scent","Sweat","Tears","Blood","Demon",
@@ -66,16 +68,16 @@ namespace Assignment01StoreInterface
             "Devi", "Jónsdóttir", "Hansen", "Andersson", "Korhonen", "Jensen", "De Jong", "Martin", "Müller", "Smith",
             "Murphy", "Peeters", "Schmit", "Garcia", "Silva", "Rossi", "Borg", "Papadopoulus", "Popa", "Nowak",
             "Gruber", "Melnik", "Hernandez", "Lopez", "Rodriguez", "Williams", "Harris", "John", "Devi", "Zhang",
-            "Johnson", "Brown", "Jones", "Miller", "Davis", "Wilson", "Taylor"};
-        public static string MovieTitle()
+            "Johnson", "Brown", "Jones", "Miller", "Davis", "Wilson", "Taylor"};                                // Kanske borde ha fler, men det räcker. Tror jag.
+        public static string MovieTitle()                       // Skapar en film titel.
         {
             string s;
             Random roll = new Random();
-            int rollValue = roll.Next(1, 9);
-            int[] weight = new int[] { 1, 2, 2, 2, 2, 3, 3, 3, 3 };
+            int rollValue = roll.Next(1, 10);
+            int[] weight = new int[] { 1, 2, 2, 2, 2, 3, 3, 3, 3 }; // Bestämmer hur många ord titeln har.
             int wordcount = weight[rollValue - 1];
 
-            switch (wordcount)
+            switch (wordcount)                                  // Kollar hur många ord som bestämdes.
             {
                 case 1:
                     s = movieTitleWords[roll.Next(0, (movieTitleWords.Length - 1))];
@@ -91,14 +93,14 @@ namespace Assignment01StoreInterface
                     break;
             }
 
-            return s;
+            return s;                                           // Skickar tillbaka titeln som slagits ihop i switchen.
         }
 
-        public static string AlbumTitle() // Används för både album och tracks.
-        {
-            string s;
+        public static string AlbumTitle()                       // Skapar en album titel.
+        {                                                       // Mestadels likadan, fast har upp till fem ord, och två varianter på fyra.
+            string s;                                           // Dessa titlar använder en annan lista ord, och används även för spår titlar.
             Random roll = new Random();
-            int rollValue = roll.Next(1, 12);
+            int rollValue = roll.Next(1, 13);
             int[] weight = new int[] { 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 5 };
             int wordcount = weight[rollValue - 1];
 
@@ -127,10 +129,10 @@ namespace Assignment01StoreInterface
                     break;
             }
 
-            return s;
+            return s;                                           // Skickar tillbaka titeln
         }
 
-        public static string Name()
+        public static string Name()                             // Skapar en persons namn. Används för Director, Artist, Featured Artists
         {
             string s = "";
             Random roll = new Random();
@@ -138,14 +140,14 @@ namespace Assignment01StoreInterface
             return s;
         }
 
-        public static string Date()
+        public static string Date()                             // Skapar ett datum i format [YYYY-MM-DD]; vissa datum kan inte skapas då det skulle kräva mer komplex kod.
         {
             Random roll = new Random();
-            string s = (Convert.ToString(roll.Next(1920, 2020)) + "-0" + Convert.ToString(roll.Next(1, 9)) + "-" + Convert.ToString(roll.Next(0,2)) + Convert.ToString(roll.Next(1, 9)));
+            string s = (Convert.ToString(roll.Next(1920, 2021)) + "-0" + Convert.ToString(roll.Next(1, 9)) + "-" + Convert.ToString(roll.Next(0,2)) + Convert.ToString(roll.Next(1, 9)));
             return s;
         }
 
-        public static decimal Rating()
+        public static decimal Rating()                          // Skapar ett värde mellan 0.0 och 9.9. Tror jag. Inte helt säker.
         {
             Random roll = new Random();
             double d = roll.NextDouble();
@@ -154,14 +156,14 @@ namespace Assignment01StoreInterface
             return d1;
         }
 
-        public static byte MovieRuntime()
+        public static byte MovieRuntime()                       // Skapar ett värde mellan 55 och 254 som motsvarar en films speltid i minuter.
         {
             Random roll = new Random();
             byte b = (byte)roll.Next(55, 255);
             return b;
         }
 
-        public static byte Price()
+        public static byte Price()                              // Väljer ett pris från en fördefinerad lista.
         {
             Random roll = new Random();
             int rollValue = roll.Next(1, 12);
@@ -170,7 +172,7 @@ namespace Assignment01StoreInterface
             return b;
         }
 
-        public static string TrackRuntime()
+        public static string TrackRuntime()                     // Skapar en track runtime och sparar i string format.
         {
             string s;
             Random roll = new Random();

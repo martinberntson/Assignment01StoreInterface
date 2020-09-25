@@ -8,40 +8,39 @@ namespace Assignment01StoreInterface
 {
     class MovieReader
     {
-        // Enter code to read and then return all the movie data here
-        public static async void Read(string FilePath)
+        public static async void Read(string FilePath)                  // Metoden som läser in filmer från fil.
         {
             List<Movie> movies = new List<Movie>();
-
-
             XmlDocument xDoc = new XmlDocument();
-            try { xDoc.Load(FilePath); }
-            catch (System.IO.FileNotFoundException)
+
+            try { xDoc.Load(FilePath); }                                // Snabbt test för att se om filen finns där programmet förväntar sig att det ska vara.
+            catch (System.IO.FileNotFoundException)                     // Om inte så går den och skapar 25 filmobjekt genom generator-metoden.
             {
                 Console.WriteLine("MovieData.xml was not found.\r\nGenerating new data...\r\nPress the any key (enter) to continue."); Console.Read();
-                // If data isn't found and I manage to create a generator for random data, then use that here instead.
                 Task<List<Movie>> task = MovieReader.Generate(25);
-                //List<Movie> generatedMovies = await task;
                 Program.SetMovies(await task);
                 return;
             }
-            XmlNodeList itemNodes = xDoc.SelectNodes("//Movies/Movie");
-            // Console.WriteLine(itemNodes.Count);
-                foreach (XmlNode movieNode in itemNodes)
+
+            XmlNodeList itemNodes = xDoc.SelectNodes("//Movies/Movie"); // Väljer var i XML-dokumentet man ska börja leta
+                foreach (XmlNode movieNode in itemNodes)                // Går igenom varje Movie objekt i XML-dokumentet
                 {
-                    movies.Add(new Movie(movieNode.Attributes["Title"].Value, movieNode.Attributes["Director"].Value, movieNode.Attributes["ReleaseDate"].Value, Convert.ToDecimal(movieNode.Attributes["AverageUserRating"].Value), Convert.ToByte(movieNode.Attributes["Runtime"].Value), Convert.ToByte(movieNode.Attributes["Price"].Value)));
-                    // Console.WriteLine($"{movieNode.Attributes["Title"].Value} \r\n  {movieNode.Attributes["Director"].Value} \r\n  {movieNode.Attributes["ReleaseDate"].Value} \r\n  {movieNode.Attributes["AverageUserRating"].Value} \r\n  {movieNode.Attributes["ReleaseDate"].Value} \r\n  {movieNode.Attributes["Runtime"].Value} \r\n  {movieNode.Attributes["Price"].Value}");
-                    // Console.WriteLine($"Movie {movieNode.Attributes["Title"].Value} added to list.");
+                    movies.Add(new Movie(movieNode.Attributes["Title"].Value, 
+                        movieNode.Attributes["Director"].Value, 
+                        movieNode.Attributes["ReleaseDate"].Value, 
+                        Convert.ToDecimal(movieNode.Attributes["AverageUserRating"].Value), 
+                        Convert.ToByte(movieNode.Attributes["Runtime"].Value), 
+                        Convert.ToByte(movieNode.Attributes["Price"].Value)));  // Kallar på Movie()-konstruktorn, lägger till nya filmen i movies listan
                 }
-            Program.SetMovies(movies);
+            Program.SetMovies(movies);                                  // Skickar in movies till den set-metod som finns i Program.cs
         }
 
         public static async Task<List<Movie>> Generate(int numberToGenerate)
-        {
+        {                                                               // Generatorn för filmer kallar på metoder i Generator-klassen för att skapa nya filmer från luft.
             List<Movie> movieList = new List<Movie>();
-            await Task.Run(() =>
+            await Task.Run(() =>                                        // Gör den här delen något? Kanske? Vet inte.
             {
-                for (int i = numberToGenerate; i > 0; i--)
+                for (int i = numberToGenerate; i > 0; i--)              // Flertal metodanrop till Generator-klassen för att skapa nya Movie objekt.
                 {
                     string s1 = Generator.MovieTitle();
                     string s2 = Generator.Name();
@@ -52,7 +51,7 @@ namespace Assignment01StoreInterface
                     movieList.Add(new Movie(s1, s2, s3, d1, b1, b2));
                 }
             });
-            return movieList;
+            return movieList;                                           // När listan är fylld så skicaks den tillbaka.
 
         }
     }
