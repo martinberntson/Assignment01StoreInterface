@@ -6,10 +6,10 @@ namespace Assignment01StoreInterface
 {
 	class Album : Goods
 	{
-		private string[] trackTitles;
-		private string[] trackRuntimes;
-		private string[] trackFeatArtists;
-		private short albumTrackCount;
+		public string[] trackTitles { get; }
+		public string[] trackRuntimes { get; }
+		public string[] trackFeatArtists { get; }
+		public short albumTrackCount { get; }
 
 		public Album(List<string> t1, List<string> t2, List<string> t3, string s1, string s2, string s3, decimal d, short sh1, byte b, short sh2) 
 		{

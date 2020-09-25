@@ -144,7 +144,7 @@ namespace Assignment01StoreInterface
                     {
                         t1.Add(Generator.AlbumTitle());
                         t2.Add(Generator.TrackRuntime());
-                        bool check = featArtistWeight[(featArtistCheck.Next(1, 5) - 1)];
+                        bool check = featArtistWeight[(featArtistCheck.Next(1, 6) - 1)];
                         if (check)
                         {
                             t3.Add(Generator.Name());

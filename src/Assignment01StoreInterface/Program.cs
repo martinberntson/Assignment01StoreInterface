@@ -22,10 +22,12 @@ namespace Assignment01StoreInterface
             Console.WriteLine("Initializing...");
             while(!check)
             {
-                if (albumList.Count > 0)
+                if ((albumList.Count > 0) && (movieList.Count > 0))  // Kollar ifall movieList och albumList har fått sitt innehåll från Initialize.Goods() innan vi går vidare.
                     check = true;
             }
 
+            // movieList.Sort((x,y) => x.Date().CompareTo(y.Date()));
+            // albumList.Sort((x,y) => x.averageUserRating.CompareTo(y.averageUserRating));
 
             while (check)
             {
