@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Assignment01StoreInterface
@@ -16,6 +17,7 @@ namespace Assignment01StoreInterface
             Initialize.Goods();                                 // Kallar metoden som populerar de statiska listorna
             Console.Clear();                                    // Tar bort text från skärmen
             Console.WriteLine("Initializing...");               // Och skriver text så användaren vet att det är dags att vänta.
+
             while(!check)                                       // Om man använder från fil, eller genererar små mängder, så märks knappt denna loop
             {                                                   // Men om man skapar 100 000 eller fler objekt så kan det ta ett tag.
                 if ((albumList.Count > 0) && (movieList.Count > 0)) 
@@ -34,6 +36,7 @@ namespace Assignment01StoreInterface
                 try                                             // Försöker sortera albumlistan med min hemmagjorda sorteringsmetod.
                 {
                     Array.Reverse(sortedAlbumList);
+                    albumList = sortedAlbumList.ToList<Album>();
                 }
                 catch { }                                       // Och inget händer om det inte fungerar.
 
@@ -43,6 +46,7 @@ namespace Assignment01StoreInterface
                 try                                             // Försöker sortera filmerna med en väldigt liknande hemmagjord sorteringsmetod.
                 {
                     Array.Reverse(sortedMovieList);
+                    movieList = sortedMovieList.ToList<Movie>();
                 }
                 catch { }                                       // Och än en gång så händer inget om det inte funkar.
 

@@ -44,7 +44,7 @@ namespace Assignment01StoreInterface
 
                         for (int n = 0; n < inputList.Count; n++)
                         {
-                            bucket[Convert.ToInt32(inputList.ElementAt(n).AlbumRating().Substring((i), 1))] += 1;   // Kortfattat: öka värdet i bucket[j]
+                            bucket[Convert.ToInt32(inputList.ElementAt(n).GetAlbumRating().Substring((i), 1))] += 1;   // Kortfattat: öka värdet i bucket[j]
                         }                                                                                           // Där 'j' motsvarar siffran i relevanta positionen
 
                         for (int n = 0; n < 9; n++)                                                                 // Här fixar vi prefix-summan
@@ -54,7 +54,7 @@ namespace Assignment01StoreInterface
 
                         for (int n = (inputList.Count - 1); n >= 0; n--)                                            // Den här loopen tar prefix-summan, kollar värderna, och
                         {                                                                                           // kopierar från inputlistan till output listan
-                            switch (Convert.ToInt32(inputList.ElementAt(n).AlbumRating().Substring(i, 1)))
+                            switch (Convert.ToInt32(inputList.ElementAt(n).GetAlbumRating().Substring(i, 1)))
                             {
                                 case 0:
                                     bucket[0] -= 1;

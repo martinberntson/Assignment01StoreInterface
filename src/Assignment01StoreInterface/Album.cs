@@ -6,75 +6,75 @@ namespace Assignment01StoreInterface
 {
 	class Album : Goods
 	{
-		public string[] trackTitles { get; }
-		public string[] trackRuntimes { get; }
-		public string[] trackFeatArtists { get; }
-		public short albumTrackCount { get; }
+		public string[] TrackTitles { get; }
+		public string[] TrackRuntimes { get; }
+		public string[] TrackFeatArtists { get; }
+		public short AlbumTrackCount { get; }
 
-		public Album(List<string> t1, List<string> t2, List<string> t3, string s1, string s2, string s3, decimal d, short sh1, byte b, short sh2) // Konstruktor.
+		public Album(List<string> trackTitles, List<string> trackRuntimes, List<string> trackFeatArtists, string title, string topBilling, string releaseDate, decimal averageUserRating, short runtime, byte price, short albumTrackCount) // Konstruktor.
 		{
-			trackTitles = new string[t1.Count];
-			trackRuntimes = new string[t2.Count];
-			trackFeatArtists = new string[t3.Count];
-			title = s1;
-			topBilling = s2;
-			releaseDate = s3;
-			averageUserRating = d;
-			runtime = sh1;
-			price = b;
-			albumTrackCount = sh2;
+			TrackTitles = new string[trackTitles.Count];
+			TrackRuntimes = new string[trackRuntimes.Count];
+			TrackFeatArtists = new string[trackFeatArtists.Count];
+			Title = title;
+			TopBilling = topBilling;
+			ReleaseDate = releaseDate;
+			AverageUserRating = averageUserRating;
+			Runtime = runtime;
+			Price = price;
+			AlbumTrackCount = albumTrackCount;
 
 
-			for (int i = 0; i < t1.Count; i++) // Konverterar lista till array.
+			for (int i = 0; i < trackTitles.Count; i++) // Konverterar lista till array.
 			{
-				trackTitles[i] = t1.ElementAt(i);
+				TrackTitles[i] = trackTitles.ElementAt(i);
 			}
-			for (int i = 0; i < t2.Count; i++) // Konverterar lista till array.
+			for (int i = 0; i < trackRuntimes.Count; i++) // Konverterar lista till array.
 			{
-				trackRuntimes[i] = t2.ElementAt(i);
+				TrackRuntimes[i] = trackRuntimes.ElementAt(i);
 			}
-			for (int i = 0; i < t3.Count; i++) // Konverterar lista till array.
+			for (int i = 0; i < trackFeatArtists.Count; i++) // Konverterar lista till array.
 			{
-				trackFeatArtists[i] = t3.ElementAt(i);
+				TrackFeatArtists[i] = trackFeatArtists.ElementAt(i);
 			}
 
-			runtime = SetAlbumRuntime(trackRuntimes);  // Skickar in array med track runtimes, får tillbaka en summa som skriver över den som hämtats från XML.
+			Runtime = GetAlbumRuntime(TrackRuntimes);  // Skickar in array med track runtimes, får tillbaka en summa som skriver över den som hämtats från XML.
 
 		}
 		
 		
 
-		public string[] AlbumTracks()
+		public string[] GetAlbumTracks()
         {
-			return trackTitles;
+			return TrackTitles;
         }
 
-		public string AlbumTrack(int i)
+		public string GetOneAlbumTrack(int index)
         {
-			return trackTitles[i];
+			return TrackTitles[index];
         }
 
-		public int AlbumTrackCount()
+		public int GetAlbumTrackCount()
         {
-			return trackTitles.Length;
+			return TrackTitles.Length;
         }
 
-		public string AlbumArtist()					// Här av tydlighetsskäl. Album.AlbumArtist() är tydligare än Album.TopBilling().
+		public string GetAlbumArtist()					// Här av tydlighetsskäl. Album.AlbumArtist() är tydligare än Album.TopBilling().
         {
-			return topBilling;
+			return TopBilling;
         }
 
-		public string AlbumRating()
+		public string GetAlbumRating()
         {
-			return Convert.ToString(averageUserRating);
+			return Convert.ToString(AverageUserRating);
         }
 
-		private short SetAlbumRuntime(string[] sA) // Tar in the array med runtimes i string format.
+		private short GetAlbumRuntime(string[] arrayOfTrackRuntimes) // Tar in the array med runtimes i string format.
         {
 			int minuteSum = 0;
 			int secondSum = 0;
-			short sum = 0;
-			foreach (string s in sA)
+			short sum;
+			foreach (string s in arrayOfTrackRuntimes)
             {
 				if (s.Length == 4)  // Kollar om det är fyra tecken [format X:XX]
 				{

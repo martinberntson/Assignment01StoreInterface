@@ -6,9 +6,9 @@ namespace Assignment01StoreInterface
 {
     public class Menu
     {
-        private static int index = 1;                                                   // Index är en pekare som säger vad som är markerat i menyn
-        static string fakturaAdress = "Unreasonable Lane 991a";                         // Tyckte det här var en passande adress    
-        static string besoksAdress = "Oddroad 13579";                                   // Men den här är bättre.
+        private static int _index = 1;                                                   // Index är en pekare som säger vad som är markerat i menyn
+        static readonly string _fakturaAdress = "Unreasonable Lane 991a";                         // Tyckte det här var en passande adress    
+        static readonly string _besoksAdress = "Oddroad 13579";                                   // Men den här är bättre.
 
         public static List<string> Draw(List<string> MenuItems, out bool isRunning)     // Tar in en lista med strings, och kör sen menyn.
         {
@@ -17,7 +17,7 @@ namespace Assignment01StoreInterface
             List<Album> albumList = Program.GetAlbums();                                // Hämtar album från Program
             List<Movie> movieList = Program.GetMovies();                                // Hämtar filmer från Program
 
-            index = 0;                                                                  // Här och där i den här klassen hittar du index = X
+            _index = 0;                                                                  // Här och där i den här klassen hittar du index = X
                                                                                         // Dessa är så pekaren inte väljer beskrivningen för nuvarande menysidan...
                                                                                         // Men ibland gör de ingenting.
             while (isRunning)
@@ -29,14 +29,14 @@ namespace Assignment01StoreInterface
                 {
                     case "Enter Store":                                                 // Första steget in i affären
                         {
-                            index = 1;
+                            _index = 1;
                             Console.WriteLine();
                             MenuItems = new List<string>
                             {
                                 "-|- Hello, and welcome to Hans-Johnny's music and film shop.           -|- \r\n" +
                                 "-|- Would you like to browse our music library? Or perhaps our movies? -|-\r\n" +
-                                $"-|- You can find us at {besoksAdress}                                   -|-\r\n" +
-                                $"-|- And billing at {fakturaAdress}                              -|-\r\n",
+                                $"-|- You can find us at {_besoksAdress}                                   -|-\r\n" +
+                                $"-|- And billing at {_fakturaAdress}                              -|-\r\n",
                                 "Albums",
                                 "Movies",
                                 "Exit"
@@ -45,7 +45,7 @@ namespace Assignment01StoreInterface
                         }
                     case "Albums":                                                      // När du väljer att se albumlistan.
                         {
-                            index = 1;
+                            _index = 1;
                             MenuItems = new List<string>
                             {
                                 "-|-  Select Yes to view our current stock of albums. No to return to the main menu. -|-\r\n",
@@ -65,16 +65,16 @@ namespace Assignment01StoreInterface
                                 "Movies",
                                 "Exit"
                             };
-                            index = 1;
+                            _index = 1;
                             break;
                         }
                     case "Movies":                                                      // Movies är lite simplare än albums
                         {
-                            index = 0;
+                            _index = 0;
                             MenuItems = new List<string>();
                             foreach (Movie m in movieList)                              // Skapa en lista av filmer
                             {
-                                MenuItems.Add(m.Title());
+                                MenuItems.Add(m.GetTitle());
                             }
 
                             bool movieLoop = true;
@@ -84,7 +84,7 @@ namespace Assignment01StoreInterface
                                 selectedMenuItem = MovieLoop(selectedMenuItem, MenuItems, out MenuItems, movieList, out movieLoop);
                             }
 
-                            index = 0;
+                            _index = 0;
                             Console.WriteLine("\r\nPress the any key (enter) to continue."); Console.SetWindowPosition(0, 0); Console.ReadLine();
                             Console.Clear();
                             MenuItems = new List<string>                                // Slänger ut dig direkt i main menu utan att fråga. Album är mycket vänligare.
@@ -94,13 +94,13 @@ namespace Assignment01StoreInterface
                                 "Movies",
                                 "Exit"
                             };
-                            index = 2;
+                            _index = 2;
                             break;
                         }
                     case " Exit":                                                       // I olika versioner av koden har jag haft både "Exit" och " Exit"
                         {                                                               // båda finns nu kvar och gör samma sak.
                             isRunning = false;                                          // Stänger av isRunning för att avsluta loopen i Main()
-                            index = 0;
+                            _index = 0;
                             Console.Clear();                                            // Tömmer console output
                             Console.ForegroundColor = ConsoleColor.DarkYellow;          // Sätter texten till mörkgul
                             Console.WriteLine("-|-Thank you for visiting our shop!\r\nPlease come visit us in person to buy some of our amazing goods!\r\nHave a nice day!");
@@ -110,7 +110,7 @@ namespace Assignment01StoreInterface
                     case "Exit":                                                        // Samma som ovan.
                         {
                             isRunning = false;
-                            index = 0;
+                            _index = 0;
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("-|-Thank you for visiting our shop!\r\nPlease come visit us in person to buy some of our amazing goods!\r\nHave a nice day!");
@@ -134,11 +134,11 @@ namespace Assignment01StoreInterface
                 selectedMenuItem = DrawMenu(MenuItems);                                 // Denna if-sats är resultatet av mina försök att fixa det problemet.
             if (selectedMenuItem.Contains('Y'))                                         // Den här träffar inte bara då du svarat "Yes" innan metodanropet, men även om du
             {                                                                           // svarat "Yes" i senare val i metoden.
-                index = 0;
+                _index = 0;
                 MenuItems = new List<string>();
                 foreach (Album a in albumList)                                          // Summerar en lista av alla albumtitlar
                 {
-                    MenuItems.Add(a.Title());
+                    MenuItems.Add(a.GetTitle());
                 }
 
                 Console.ForegroundColor = ConsoleColor.Yellow;                          // Sätter textfärg till gul
@@ -149,22 +149,22 @@ namespace Assignment01StoreInterface
                     selectedMenuItem = DrawMenu(MenuItems);
                     foreach (Album a in albumList)
                     {
-                        if (a.Title() == selectedMenuItem)                              // Kollar om du valt ett specifikt album
+                        if (a.GetTitle() == selectedMenuItem)                              // Kollar om du valt ett specifikt album
                         {                                                               // Om ja, skriv ut det albumets information
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine($"-|- {a.Title()}\r\n-|- Performed by {a.AlbumArtist()}\r\n-|- Released on {a.Date()}\r\n-|- It has a runtime of {a.runtime} minutes\r\n-|- With {a.trackTitles.Length} tracks.\r\n-|- With an average user rating of {a.averageUserRating}\r\n-|- Available now for the low-low price of: {a.price}:-\r\n");
-                            for (int i = 0; i < a.trackTitles.Length; i++)              // Och gå sen igenom dess arrayer av track-data
+                            Console.WriteLine($"-|- {a.GetTitle()}\r\n-|- Performed by {a.GetAlbumArtist()}\r\n-|- Released on {a.Date()}\r\n-|- It has a runtime of {a.Runtime} minutes\r\n-|- With {a.TrackTitles.Length} tracks.\r\n-|- With an average user rating of {a.AverageUserRating}\r\n-|- Available now for the low-low price of: {a.Price}:-\r\n");
+                            for (int i = 0; i < a.TrackTitles.Length; i++)              // Och gå sen igenom dess arrayer av track-data
                             {                                                           // Så att den kan skriva ut alla tracks också.
                                 string s;
-                                if (a.trackFeatArtists[i] != "")                        // Om Feat. Artist är en blank string (inte null) så skippar den att skriva ut den delen.
+                                if (a.TrackFeatArtists[i] != "")                        // Om Feat. Artist är en blank string (inte null) så skippar den att skriva ut den delen.
                                 {
-                                    s = $"{a.trackTitles[i]}\r\n  Runtime: {a.trackRuntimes[i]}\r\n  Featuring: {a.trackFeatArtists[i]}\r\n";
+                                    s = $"{a.TrackTitles[i]}\r\n  Runtime: {a.TrackRuntimes[i]}\r\n  Featuring: {a.TrackFeatArtists[i]}\r\n";
                                     MenuItems.Add(s);
                                 }
                                 else
                                 {
-                                    s = $"{a.trackTitles[i]}\r\n  Runtime: {a.trackRuntimes[i]}\r\n";
+                                    s = $"{a.TrackTitles[i]}\r\n  Runtime: {a.TrackRuntimes[i]}\r\n";
                                     MenuItems.Add(s);
                                 }
                                 Console.WriteLine(s);                                   // Efter att if/else satt ihop en string med trackdata så skrivs det ut.
@@ -173,7 +173,7 @@ namespace Assignment01StoreInterface
                         }
                     }
                 }
-                index = 0;
+                _index = 0;
                 Console.WriteLine("\r\nPress the any key (enter) to continue."); Console.SetWindowPosition(0,0); Console.ReadLine();
                 Console.Clear();                                                        // Dessa två rader gör så att informationen stannar på skärm tills man trycker enter.
 
@@ -184,7 +184,7 @@ namespace Assignment01StoreInterface
                                         "No"
                                     };
                 bool repeat = true;
-                index = 1;
+                _index = 1;
                 while (repeat)                                                          // Om "Yes", loopa igen, om "No", gå tillbaka till main menu.
                 {
                     selectedMenuItem = DrawMenu(MenuItems);
@@ -193,14 +193,14 @@ namespace Assignment01StoreInterface
                     if (selectedMenuItem.Contains('N'))
                     {
                         albumsLoop = false;
-                        index = 1;
+                        _index = 1;
                     }
                 }
             }
             else if (selectedMenuItem.Contains('N'))
             {
                 albumsLoop = false;
-                index = 1;
+                _index = 1;
             }
 
             MenuItemsOut = MenuItems;                                                   // Skickar tillbaka MenuItems
@@ -216,10 +216,10 @@ namespace Assignment01StoreInterface
 
             foreach (Movie m in movieList)                                              // Loopa igenom alla filmer och kolla om en specifik film är vald, om ja, skriv ut den.
             {
-                if (m.Title() == selectedMenuItem)
+                if (m.GetTitle() == selectedMenuItem)
                 {
                     Console.Clear();
-                    Console.WriteLine($"-|- {m.Title()}\r\n-|- Directed by {m.MovieDirector()}\r\n-|- Released on {m.Date()}\r\n-|- It has a runtime of {m.runtime} minutes\r\n-|- With an average user rating of {m.averageUserRating}\r\n-|- Available now for the amazingly low price of: {m.price}:-\r\n");
+                    Console.WriteLine($"-|- {m.GetTitle()}\r\n-|- Directed by {m.GetMovieDirector()}\r\n-|- Released on {m.Date()}\r\n-|- It has a runtime of {m.Runtime} minutes\r\n-|- With an average user rating of {m.AverageUserRating}\r\n-|- Available now for the amazingly low price of: {m.Price}:-\r\n");
                     movieLoop = false;
                 }
             }
@@ -250,7 +250,7 @@ namespace Assignment01StoreInterface
                                                                                         // Men det mesta av metoden är oförändrat.
             for (int i = 0; i < items.Count; i++)                                       // Skriver ut alla strings i listan den får in
             { 
-                if (i == index)                                                         // Det nuvarande valda listobjektet blir grå text på svart bakgrund
+                if (i == _index)                                                         // Det nuvarande valda listobjektet blir grå text på svart bakgrund
                 {
 
                     Console.BackgroundColor = ConsoleColor.Gray;
@@ -269,37 +269,37 @@ namespace Assignment01StoreInterface
                 Console.ResetColor();
             }
 
-            Console.SetWindowPosition(0, Math.Max(index-3, 0));                         // La till den här raden så att den scrollar upp automatiskt vid höga antal objekt i listan
+            Console.SetWindowPosition(0, Math.Max(_index-3, 0));                     // La till den här raden så att den scrollar upp automatiskt vid höga antal objekt i listan
                                                                                         // Math.Max används för att undvika fel ifall [index-3] skulle vara negativt.
             ConsoleKeyInfo ckey = Console.ReadKey();                                    // Jag har inte testat om det faktiskt behövs.
 
             if (ckey.Key == ConsoleKey.DownArrow)                                       // Kollar om man trycker på pil ner
             {
-                if (index == items.Count - 1)
+                if (_index == items.Count - 1)
                 {
 
                 }
                 else
                 {
-                    index++;                                                            // Då rad noll är högst upp och den räknar uppåt när man går ner i listan
+                    _index++;                                                            // Då rad noll är högst upp och den räknar uppåt när man går ner i listan
                 }                                                                       // Så blir pil ner en ökning av index.
             }
 
             else if (ckey.Key == ConsoleKey.UpArrow)                                    // Kollar om man trycker på pil upp
             {
-                if (index <= 0)
+                if (_index <= 0)
                 {
 
                 }
                 else
                 {
-                    index--;                                                            // Och en minskning av index från pil upp tar dig uppåt i listan.
+                    _index--;                                                            // Och en minskning av index från pil upp tar dig uppåt i listan.
                 }
             }
             else if (ckey.Key == ConsoleKey.Enter)                                      // Om man trycker på enter så väljs det nuvarande objektet som skickas tillbaka.
             {
-                if (index < items.Count)
-                    return items[index];
+                if (_index < items.Count)
+                    return items[_index];
                 else
                     return items[items.Count - 1];
             }
@@ -311,46 +311,5 @@ namespace Assignment01StoreInterface
             Console.Clear();
             return "";
         }
-
-        private static ConsoleColor ColorChanger(ConsoleColor input)                    // Ville ha lite mer färg i programmet, så la in den här.
-        {                                                                               // Men som du kanske ser finns det noll referenser, för det blev inte snyggt.
-            if (input == ConsoleColor.Red)                                              // Skulle kunna lägga några timmar på att få allt att se ut som en regnbåge
-                                                                                        // Men känns som om den lilla mängd färg jag la in är mer kostnadseffektivt.
-                switch (input)                                                          // Finns inget mer intressant här.
-                {
-                    case ConsoleColor.Red:
-                        input = ConsoleColor.DarkRed;
-                        break;
-                    case ConsoleColor.DarkRed:
-                        input = ConsoleColor.Blue;
-                        break;
-                    case ConsoleColor.Blue:
-                        input = ConsoleColor.DarkBlue;
-                        break;
-                    case ConsoleColor.DarkBlue:
-                        input = ConsoleColor.Magenta;
-                        break;
-                    case ConsoleColor.Magenta:
-                        input = ConsoleColor.DarkMagenta;
-                        break;
-                    case ConsoleColor.DarkMagenta:
-                        input = ConsoleColor.Yellow;
-                        break;
-                    case ConsoleColor.Yellow:
-                        input = ConsoleColor.Green;
-                        break;
-                    case ConsoleColor.Green:
-                        input = ConsoleColor.DarkGreen;
-                        break;
-                    case ConsoleColor.DarkGreen:
-                        input = ConsoleColor.Red;
-                        break;
-                    default:
-                        break;
-                }
-
-            return input;
-        }
-
     }
 }

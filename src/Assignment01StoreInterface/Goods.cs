@@ -4,20 +4,20 @@ namespace Assignment01StoreInterface
 {
     class Goods								// topBilling har ingen getter, då det är mer tydligt med Movie.GetDirector och Album.GetArtist än X.GetTopBilling
     {
-		public string title;
-		public string topBilling;
-		public string releaseDate;
-		public decimal averageUserRating;
-		public short runtime;
-		public byte price;
+		public string Title;
+		public string TopBilling;
+		public string ReleaseDate;
+		public decimal AverageUserRating;
+		public short Runtime;
+		public byte Price;
 
-		public string Title()
+		public string GetTitle()
 		{
-			return title;
+			return Title;
 		}
 		public string Date()
 		{
-			return releaseDate;
+			return ReleaseDate;
 		}
 	}
 }

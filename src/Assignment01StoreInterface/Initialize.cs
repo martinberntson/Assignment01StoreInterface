@@ -45,7 +45,8 @@ namespace Assignment01StoreInterface
         {
             List<string> staticOrDynamic = new List<string>                         // Menyval och beskrivning.
             {
-                "-|- Would you like to get inventory from file or generate it procedurally?\r\n-|- Warning! Just because you can input two billion does not mean it's a good idea!\r\n-|- Be responsible, please! (suggested values between 10 and 100)\r\n", 
+            "Navigate the menus using the [UpArrow], [DownArrow] and [Enter] keys.\n" +
+                "\n-|- Would you like to get inventory from file or generate it procedurally?\r\n-|- Warning! Just because you can input two billion does not mean it's a good idea!\r\n-|- Be responsible, please! (suggested values between 10 and 100)\r\n", 
                 "File", 
                 "Generate" 
             };
