@@ -1,6 +1,4 @@
-﻿
-
-namespace Assignment01StoreInterface
+﻿namespace Assignment01StoreInterface
 {
     class Movie : Goods
     {

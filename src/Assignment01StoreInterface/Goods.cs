@@ -1,6 +1,4 @@
-﻿
-
-namespace Assignment01StoreInterface
+﻿namespace Assignment01StoreInterface
 {
     class Goods								// topBilling har ingen getter, då det är mer tydligt med Movie.GetDirector och Album.GetArtist än X.GetTopBilling
     {
