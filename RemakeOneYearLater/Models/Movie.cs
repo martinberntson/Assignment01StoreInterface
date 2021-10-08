@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RemakeOneYearLater.Models
 {
-    class Movie
+    public class Movie
     {
         public string Title { get; set; }
         public string Director { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RemakeOneYearLater.Models
 {
-    class Album
+    public class Album
     {
         public string Title { get; set; }
         public string TopBillingArtist { get; set; }
