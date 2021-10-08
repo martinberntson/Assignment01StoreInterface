@@ -6,6 +6,6 @@ namespace RemakeOneYearLater.Models
     {
         public string Title { get; set; }
         public short Runtime { get; set; }
-        public IEnumerable<string> FeaturedArtists { get; set; }
+        public string FeaturedArtists { get; set; }
     }
 }
