@@ -8,5 +8,13 @@ namespace RemakeOneYearLater.Models
 {
     class Movie
     {
+        public string Title { get; set; }
+        public string Director { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public decimal AverageUserRating { get; set; }
+        public short Runtime { get; set; }
+        public short Price { get; set; }
+
+
     }
 }
